@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-elysian-bg text-elysian-main font-sans antialiased;
+    overflow-x: hidden;
+  }
+  
+  ::selection {
+    @apply bg-elysian-main text-white;
+  }
+}
+
+@layer utilities {
+  .clip-hidden {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+  .clip-visible {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Custom hide scrollbar for that editorial feel */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}

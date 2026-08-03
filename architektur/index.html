@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elysian — Editorial Architektur</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- GSAP & Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+</head>
+<body class="bg-elysian-bg text-elysian-main selection:bg-elysian-main selection:text-white antialiased overflow-x-hidden">
+
+    <!-- WebGL Background -->
+    <canvas id="webgl-canvas" class="fixed inset-0 z-0 opacity-40 pointer-events-none"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[60] text-elysian-main px-6 lg:px-12 py-6 lg:py-10 flex justify-between items-center pointer-events-auto mix-blend-multiply">
+        <div class="text-[11px] font-semibold tracking-[0.2em] uppercase flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-elysian-main inline-block"></span> ELYSIAN
+        </div>
+        
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex gap-12 text-[11px] font-semibold tracking-[0.1em] uppercase">
+            <a href="#" class="hover:opacity-70 transition-opacity">Arbeiten</a>
+            <a href="#" class="hover:opacity-70 transition-opacity">Modelle</a>
+            <a href="#" class="hover:opacity-70 transition-opacity">Kontakt</a>
+        </div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden relative z-[60] p-2 text-elysian-main">
+            <iconify-icon icon="solar:hamburger-menu-linear" width="28"></iconify-icon>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-elysian-bg z-50 flex flex-col justify-center items-center opacity-0 pointer-events-none lg:hidden">
+        <div class="flex flex-col gap-10 text-center text-2xl font-light tracking-[0.2em] uppercase text-elysian-main">
+            <a href="#" class="mobile-link hover:opacity-70 transition-opacity translate-y-8 opacity-0">Arbeiten</a>
+            <a href="#" class="mobile-link hover:opacity-70 transition-opacity translate-y-8 opacity-0">Modelle</a>
+            <a href="#" class="mobile-link hover:opacity-70 transition-opacity translate-y-8 opacity-0">Kontakt</a>
+        </div>
+        <div class="absolute bottom-10 text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary">
+            © 2024. MAKELLOS AUFGELÖST.
+        </div>
+    </div>
+
+    <!-- SECTION 1: HERO DESKTOP SCENE -->
+    <section id="scene" class="relative max-w-[1920px] mx-auto h-[100svh] w-full hidden lg:block overflow-hidden">
+        <!-- Main Text -->
+        <div class="el-text-main absolute top-[12%] left-[8%] z-30 pointer-events-none">
+            <div class="overflow-hidden"><h1 class="text-[3rem] 2xl:text-[3.5rem] font-light text-elysian-main tracking-tight leading-[1.1] translate-y-full">ELYSIAN</h1></div>
+            <div class="overflow-hidden"><h1 class="text-[3rem] 2xl:text-[3.5rem] font-light text-elysian-main tracking-tight leading-[1.1] translate-y-full">KONSTRUKTE</h1></div>
+            <p class="text-sm text-elysian-secondary max-w-[260px] leading-relaxed mt-6 opacity-0">
+                Die feine Balance zwischen brutalistischer Geometrie und organisch fließenden Formen.
+            </p>
+        </div>
+
+        <!-- Images -->
+        <div class="el-img-tr absolute top-0 right-0 w-[42%] h-[60%] z-0 overflow-hidden clip-hidden">
+            <div class="img-inner w-full h-full scale-110">
+                <img src="assets/hero-tr.webp" alt="Architektur" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="el-img-center absolute top-[5%] left-[33%] w-[32%] h-[95%] z-10 overflow-hidden clip-hidden">
+            <div class="img-inner w-full h-full scale-110">
+                <img src="assets/hero-center.webp" alt="Hauptmotiv" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="el-img-bl absolute bottom-[10%] left-[10%] w-[18%] h-[46%] z-20 overflow-hidden clip-hidden">
+            <div class="img-inner w-full h-full scale-110">
+                <img src="assets/hero-bl.webp" alt="Innenraum" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="el-img-mr absolute top-[42%] right-[12%] w-[24%] h-[28%] z-20 border-[6px] border-elysian-bg overflow-hidden clip-hidden">
+            <div class="img-inner w-full h-full scale-110">
+                <img src="assets/hero-mr.webp" alt="Detail MR" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="el-img-br absolute bottom-[0%] right-0 w-[20%] h-[38%] z-10 overflow-hidden clip-hidden">
+            <div class="img-inner w-full h-full scale-110">
+                <img src="assets/hero-br.webp" alt="Landschaft BR" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Floating Card -->
+        <div class="el-card absolute bottom-[8%] right-[10%] w-[22%] z-30 bg-white shadow-2xl p-6 2xl:p-8 opacity-0 translate-y-8">
+            <div class="flex items-start gap-5 mb-6">
+                <img src="assets/hero-card-thumb.jpg" alt="Avatar" class="w-10 h-10 object-cover grayscale">
+                <p class="text-xs text-elysian-secondary leading-relaxed">
+                    Kuratierte Räume, gebaut für tiefe Konzentration, Ruhe und ästhetische Beständigkeit.
+                </p>
+            </div>
+            <ul class="space-y-2.5 text-[11px] text-elysian-secondary/80 mb-8">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-slate-300"></span> Minimalistische Materialintegration</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-slate-300"></span> Nachhaltige Rohstoffbeschaffung</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-slate-300"></span> Kartierung des natürlichen Lichtverlaufs</li>
+            </ul>
+            <div class="flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-main pt-5 border-t border-slate-100">
+                <iconify-icon icon="solar:buildings-linear" width="14"></iconify-icon> VERTEX
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: HERO MOBILE FALLBACK -->
+    <section class="relative min-h-[100svh] w-full lg:hidden flex flex-col pt-32 px-6 pb-20 z-10">
+        <div class="relative z-20 mb-12">
+            <h1 class="text-4xl font-light text-elysian-main tracking-tight leading-[1.1] mb-1">ELYSIAN</h1>
+            <h1 class="text-4xl font-light text-elysian-main tracking-tight leading-[1.1] mb-4">KONSTRUKTE</h1>
+            <p class="text-sm text-elysian-secondary max-w-xs leading-relaxed">
+                Die feine Balance zwischen brutalistischer Geometrie und organisch fließenden Formen.
+            </p>
+        </div>
+        <div class="w-full aspect-[4/5] relative z-10 mb-8 shadow-xl">
+            <img src="assets/hero-center.webp" alt="Hauptmotiv Mobil" class="w-full h-full object-cover object-center">
+        </div>
+        
+        <!-- Mobile Card -->
+        <div class="w-full bg-white shadow-xl p-6 relative z-20 mt-[-4rem]">
+            <div class="flex items-start gap-4 mb-6">
+                <img src="assets/hero-card-thumb.jpg" alt="Avatar" class="w-10 h-10 object-cover grayscale">
+                <p class="text-xs text-elysian-secondary leading-relaxed">
+                    Kuratierte Räume, gebaut für tiefe Konzentration, Ruhe und ästhetische Beständigkeit.
+                </p>
+            </div>
+            <ul class="space-y-2 text-[11px] text-elysian-secondary/80 mb-6">
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-slate-300"></span> Minimalistische Materialintegration</li>
+                <li class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-slate-300"></span> Nachhaltige Rohstoffbeschaffung</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SECTION 2: PHASE 01 -->
+    <section class="relative z-10 py-20 lg:py-32 px-6 lg:px-12 max-w-[1600px] mx-auto lg:mt-24 overflow-hidden">
+        <div class="flex flex-col lg:flex-row justify-between lg:items-end mb-16 lg:mb-24 gap-6 gs-reveal opacity-0 translate-y-10">
+            <div>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary">PHASE 01</span>
+                    <div class="w-12 h-[1px] bg-elysian-secondary/30"></div>
+                </div>
+                <h2 class="text-3xl lg:text-[3rem] font-light tracking-tight leading-[1.1] text-elysian-main">
+                    RÄUMLICHE<br>DYNAMIK
+                </h2>
+            </div>
+            <div class="max-w-md lg:pb-2">
+                <p class="text-sm text-elysian-secondary leading-relaxed">
+                    Wir begreifen jedes Volumen als Gelegenheit, Licht, Schatten und menschliche Interaktion zu definieren. Materialien wählen wir nicht nach Erscheinung, sondern nach Resonanz.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <!-- Left -->
+            <div class="gs-reveal opacity-0 translate-y-10">
+                <div class="w-full lg:w-[90%] aspect-[4/5] overflow-hidden mb-6 group">
+                    <img src="assets/section_1-left.webp" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-sm font-semibold tracking-wide uppercase mb-2 text-elysian-main">MONOLITHISCHE PRÄSENZ</h3>
+                <p class="text-sm text-elysian-secondary/80 max-w-xs leading-relaxed">Das Gewicht roher Materialien verankert die Räume in ihrer natürlichen Umgebung.</p>
+            </div>
+            
+            <!-- Right -->
+            <div class="pt-0 lg:pt-40 gs-reveal opacity-0 translate-y-10">
+                <div class="w-full aspect-[4/5] overflow-hidden mb-6 group">
+                    <img src="assets/section_1-right.webp" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-sm font-semibold tracking-wide uppercase mb-2 text-elysian-main">LICHT-INTERVENTIONEN</h3>
+                <p class="text-sm text-elysian-secondary/80 max-w-xs leading-relaxed">Natürliches Licht wird choreografiert und erzeugt über den Tag hinweg wechselnde Atmosphären.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: PHASE 02 -->
+    <section class="relative z-10 py-20 lg:py-32 px-6 lg:px-12 max-w-[1600px] mx-auto overflow-hidden">
+        <div class="flex flex-col lg:flex-row justify-between lg:items-end mb-16 lg:mb-24 gap-6 gs-reveal opacity-0 translate-y-10">
+            <div>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary">PHASE 02</span>
+                    <div class="w-12 h-[1px] bg-elysian-secondary/30"></div>
+                </div>
+                <h2 class="text-3xl lg:text-[3rem] font-light tracking-tight leading-[1.1] text-elysian-main">
+                    MATERIAL-<br>ARTIKULATION
+                </h2>
+            </div>
+            <div class="max-w-md lg:pb-2">
+                <p class="text-sm text-elysian-secondary leading-relaxed">
+                    Seltene und elementare Werkstoffe werden zu Texturen verarbeitet, die Berührung verlangen und würdevoll altern — roher Brutalismus, verfeinert.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <!-- Left -->
+            <div class="gs-reveal opacity-0 translate-y-10">
+                <div class="w-full aspect-[4/5] overflow-hidden mb-6 group">
+                    <img src="assets/section_2-left.webp" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-sm font-semibold tracking-wide uppercase mb-2 text-elysian-main">TAKTILE RESONANZ</h3>
+                <p class="text-sm text-elysian-secondary/80 max-w-xs leading-relaxed">Oberflächen, die auf Berührung reagieren und mit der Zeit Charakter gewinnen.</p>
+            </div>
+            
+            <!-- Right -->
+            <div class="pt-0 lg:pt-40 gs-reveal opacity-0 translate-y-10">
+                <div class="w-full lg:w-[90%] aspect-[4/5] overflow-hidden mb-6 group lg:ml-auto">
+                    <img src="assets/section_2-right.webp" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-sm font-semibold tracking-wide uppercase mb-2 text-elysian-main">KONSTRUKTIVE EHRLICHKEIT</h3>
+                <p class="text-sm text-elysian-secondary/80 max-w-xs leading-relaxed">Die Schönheit tragender Elemente bleibt sichtbar, ohne oberflächliches Beiwerk.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PHASE 03 -->
+    <section class="relative z-10 py-20 lg:py-32 px-6 lg:px-12 max-w-[1600px] mx-auto pb-32 lg:pb-48 overflow-hidden">
+        <div class="flex flex-col lg:flex-row justify-between lg:items-end mb-16 lg:mb-24 gap-6 gs-reveal opacity-0 translate-y-10">
+            <div>
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary">PHASE 03</span>
+                    <div class="w-12 h-[1px] bg-elysian-secondary/30"></div>
+                </div>
+                <h2 class="text-3xl lg:text-[3rem] font-light tracking-tight leading-[1.1] text-elysian-main">
+                    ÖKOLOGISCHE<br>SYNTHESE
+                </h2>
+            </div>
+            <div class="max-w-md lg:pb-2">
+                <p class="text-sm text-elysian-secondary leading-relaxed">
+                    Gebaute Formen verschmelzen mit der umgebenden Landschaft und lösen die Grenze zwischen innen und außen auf.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+            <!-- Left -->
+            <div class="gs-reveal opacity-0 translate-y-10">
+                <div class="w-full lg:w-[90%] aspect-[4/5] overflow-hidden mb-6 group">
+                    <img src="assets/section_3-left.webp" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-sm font-semibold tracking-wide uppercase mb-2 text-elysian-main">FLIESSENDE GRENZEN</h3>
+                <p class="text-sm text-elysian-secondary/80 max-w-xs leading-relaxed">Übergänge, durch die die Natur mühelos in den Wohnraum dringt.</p>
+            </div>
+            
+            <!-- Right -->
+            <div class="pt-0 lg:pt-40 gs-reveal opacity-0 translate-y-10">
+                <div class="w-full aspect-[4/5] overflow-hidden mb-6 group">
+                    <img src="assets/section_3-right.webp" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-sm font-semibold tracking-wide uppercase mb-2 text-elysian-main">GANZHEITLICHE ÖKOSYSTEME</h3>
+                <p class="text-sm text-elysian-secondary/80 max-w-xs leading-relaxed">Die Architektur nimmt aktiv am lokalen ökologischen Kontext teil und stützt ihn.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: DARK QUOTE -->
+    <section class="relative z-10 bg-elysian-dark text-white py-32 lg:py-48 px-6 lg:px-12 flex flex-col items-center text-center">
+        <h2 class="text-2xl lg:text-[2.5rem] font-serif font-light max-w-4xl leading-tight mb-12 gs-reveal opacity-0 translate-y-10">
+            „Der Raum, den sie geschaffen haben, beherbergt nicht nur unseren Betrieb — er prägt die Psychologie jedes Menschen, der ihn betritt. Eine Meisterklasse in reiner Zurückhaltung.“
+        </h2>
+        <div class="flex items-center justify-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 gs-reveal opacity-0 translate-y-10">
+            <div class="w-4 lg:w-8 h-[1px] bg-white/20"></div>
+            MARCUS V., DIREKTOR
+            <div class="w-4 lg:w-8 h-[1px] bg-white/20"></div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: STIMMEN DER KUNDSCHAFT -->
+    <section class="relative z-10 py-20 lg:py-32 px-6 lg:px-12 max-w-[1600px] mx-auto text-center">
+        <div class="mb-16 lg:mb-24 gs-reveal opacity-0 translate-y-10">
+            <h2 class="text-2xl lg:text-3xl font-light tracking-tight text-elysian-main mb-3">STIMMEN DER KUNDSCHAFT</h2>
+            <p class="text-sm text-elysian-secondary">Rückblicke auf die Räume, die wir geformt haben.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div class="p-8 lg:p-10 border border-elysian-secondary/10 bg-elysian-bg/50 text-left flex flex-col h-full gs-reveal opacity-0 translate-y-10">
+                <p class="text-sm text-elysian-main leading-relaxed mb-10 flex-grow">
+                    „Eine vollkommene Verwandlung unseres Raums. Die Sorgfalt für natürliches Licht und rohe Materialien hat einen Ort geschaffen, den wir nie wieder verlassen wollen. Ihre Handschrift ist einzigartig.“
+                </p>
+                <div class="flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary mt-auto">
+                    <div class="w-6 h-[1px] bg-elysian-secondary/30"></div>
+                    SARAH J.
+                </div>
+            </div>
+            <div class="p-8 lg:p-10 border border-elysian-secondary/10 bg-elysian-bg/50 text-left flex flex-col h-full gs-reveal opacity-0 translate-y-10">
+                <p class="text-sm text-elysian-main leading-relaxed mb-10 flex-grow">
+                    „Elysian Constructs hat unsere Erwartungen übertroffen. Ihr Verständnis von brutalistischer Geometrie im Zusammenspiel mit fließenden organischen Formen ist in der modernen Architektur beispiellos.“
+                </p>
+                <div class="flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary mt-auto">
+                    <div class="w-6 h-[1px] bg-elysian-secondary/30"></div>
+                    DAVID M.
+                </div>
+            </div>
+            <div class="p-8 lg:p-10 border border-elysian-secondary/10 bg-elysian-bg/50 text-left flex flex-col h-full gs-reveal opacity-0 translate-y-10">
+                <p class="text-sm text-elysian-main leading-relaxed mb-10 flex-grow">
+                    „Die akribische Kuratierung jedes Details in unserem Büro hat die Dynamik im Team vollständig verändert. Eine Meisterklasse in ökologischer Synthese und reiner Zurückhaltung.“
+                </p>
+                <div class="flex items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary mt-auto">
+                    <div class="w-6 h-[1px] bg-elysian-secondary/30"></div>
+                    ELENA R.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: LEISTUNGSMODELLE -->
+    <section class="relative z-10 py-20 lg:py-32 px-6 lg:px-12 max-w-[1600px] mx-auto text-center pb-32 lg:pb-48">
+        <div class="mb-16 lg:mb-24 gs-reveal opacity-0 translate-y-10">
+            <h2 class="text-2xl lg:text-3xl font-light tracking-tight text-elysian-main mb-3">LEISTUNGSMODELLE</h2>
+            <p class="text-sm text-elysian-secondary">Maßgeschneiderte strukturelle und räumliche Eingriffe.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-0">
+            <!-- Phase 1 -->
+            <div class="p-8 lg:p-14 border border-elysian-secondary/10 bg-elysian-bg/30 text-left flex flex-col h-full gs-reveal opacity-0 translate-y-10">
+                <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary mb-4">PHASE I</div>
+                <h3 class="text-xl lg:text-2xl font-light mb-4">Konzept</h3>
+                <p class="text-sm text-elysian-secondary leading-relaxed mb-8">
+                    Erste räumliche Analyse und Materialnarrativ, um die Projektgrenzen zu bestimmen.
+                </p>
+                <ul class="space-y-4 text-sm text-elysian-secondary mb-12 flex-grow">
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Topografische Studie</li>
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Formfindung</li>
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Machbarkeitsbericht</li>
+                </ul>
+                <button class="w-full py-4 border border-elysian-main text-elysian-main text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-elysian-main hover:text-white transition-colors duration-300 mt-auto">
+                    ANFRAGEN
+                </button>
+            </div>
+
+            <!-- Phase 2 (Dark) -->
+            <div class="p-8 lg:p-14 bg-elysian-dark text-left flex flex-col h-full gs-reveal opacity-0 translate-y-10 lg:scale-105 z-10 shadow-2xl relative">
+                <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/50 mb-4">PHASE II</div>
+                <h3 class="text-xl lg:text-2xl font-light text-white mb-4">Entwurf</h3>
+                <p class="text-sm text-white/70 leading-relaxed mb-8">
+                    Vollständige Bauplanung, Innenraumführung und Ausstattungsspezifikation.
+                </p>
+                <ul class="space-y-4 text-sm text-white/80 mb-12 flex-grow">
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Komplette Schemata</li>
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Materialbeschaffung</li>
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Lichtverlaufs-Modellierung</li>
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Maßtischlerei-Details</li>
+                </ul>
+                <button class="w-full py-4 bg-white text-elysian-dark text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-white/90 transition-colors duration-300 mt-auto">
+                    BEGINNEN
+                </button>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="p-8 lg:p-14 border border-elysian-secondary/10 bg-elysian-bg/30 text-left flex flex-col h-full gs-reveal opacity-0 translate-y-10">
+                <div class="text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary mb-4">PHASE III</div>
+                <h3 class="text-xl lg:text-2xl font-light mb-4">Ausführung</h3>
+                <p class="text-sm text-elysian-secondary leading-relaxed mb-8">
+                    Projektsteuerung von Anfang bis Ende — mit absoluter Treue zur ursprünglichen Entwurfsidee.
+                </p>
+                <ul class="space-y-4 text-sm text-elysian-secondary mb-12 flex-grow">
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Auswahl der Gewerke</li>
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Bauaufsicht vor Ort</li>
+                    <li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="mt-0.5 opacity-50"></iconify-icon> Präzisionsprüfung</li>
+                </ul>
+                <button class="w-full py-4 border border-elysian-main text-elysian-main text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-elysian-main hover:text-white transition-colors duration-300 mt-auto">
+                    ANFRAGEN
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-elysian-secondary/20 py-8 lg:py-12 px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-elysian-secondary">
+        <div class="flex items-center gap-2 text-elysian-main">
+            <span class="w-1.5 h-1.5 bg-elysian-main inline-block"></span> ELYSIAN
+        </div>
+        <div class="flex gap-6 lg:gap-8 flex-wrap justify-center">
+            <a href="#" class="hover:text-elysian-main transition-colors">INDEX</a>
+            <a href="#" class="hover:text-elysian-main transition-colors">JOURNAL</a>
+            <a href="#" class="hover:text-elysian-main transition-colors">KONTAKT</a>
+        </div>
+        <div>
+            © 2024. MAKELLOS AUFGELÖST.
+        </div>
+    </footer>
+
+    <script src="src/main.js"></script>
+</body>
+</html>

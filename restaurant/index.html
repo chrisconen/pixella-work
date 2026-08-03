@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#070605" />
+    <meta name="description" content="EMBER &amp; OAK — Holzfeuer-Steakhouse in Wien. Sechs Gerichte. Ein Feuer. Obere Donaustraße 12, Mi–So ab 18:00." />
+    <title>EMBER &amp; OAK — Holzfeuer. Sonst nichts.</title>
+    <link rel="preload" href="./assets/media/poster.webp" as="image" type="image/webp" />
+    <link rel="preload" href="./assets/media/hero/frame-001.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="./assets/css/lenis.css" />
+    <link rel="stylesheet" href="./assets/css/ember-oak.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#menu">Zur Karte springen</a>
+
+    <div class="loading-curtain" data-loader aria-live="polite">
+      <div class="loading-mark">E<span>&amp;</span>O</div>
+      <div class="loading-line"><i data-loader-bar></i></div>
+      <p><span data-loader-value>0</span> / 100</p>
+    </div>
+
+    <div class="atmosphere" aria-hidden="true">
+      <div class="grain"></div>
+      <div class="cursor-glow"></div>
+    </div>
+
+    <header class="masthead" data-header>
+      <a class="wordmark" href="#hero" aria-label="EMBER &amp; OAK Startseite">
+        <span>EMBER</span><i></i><span>OAK</span>
+      </a>
+      <p class="collection">Wien · Holzfeuer-Steakhouse</p>
+      <a class="reserve-link" href="#reserve"><span>Tisch reservieren</span><b aria-hidden="true">↗</b></a>
+    </header>
+
+    <aside class="chapter-rail" aria-label="Kapitel dieser Seite">
+      <span class="rail-line"><i data-rail-progress></i></span>
+      <ol>
+        <li class="is-active"><a href="#hero"><b>01</b><span>Feuer</span></a></li>
+        <li><a href="#story"><b>02</b><span>Raum</span></a></li>
+        <li><a href="#menu"><b>03</b><span>Karte</span></a></li>
+        <li><a href="#private"><b>04</b><span>Privat</span></a></li>
+        <li><a href="#find"><b>05</b><span>Anfahrt</span></a></li>
+        <li><a href="#reserve"><b>06</b><span>Reservieren</span></a></li>
+      </ol>
+    </aside>
+
+    <main>
+      <section id="hero" class="scroll-chapter hero" data-chapter="hero">
+        <div class="sticky-stage hero-stage">
+          <img class="canvas-fallback" src="./assets/media/poster.webp" alt="Ribeye über offener Eichenflamme" />
+          <canvas class="fire-canvas" data-fire-canvas aria-hidden="true"></canvas>
+          <div class="hero-light" aria-hidden="true"></div>
+
+          <div class="hero-brand" data-window="-0.12,0.22"><p>Gegr. Wien · MMXXVI</p></div>
+
+          <div class="hero-title" data-window="-0.12,0.36">
+            <h1>EMBER <span>&amp;</span> OAK</h1>
+            <p class="hero-tagline">Holzfeuer. Sonst nichts.</p>
+            <div class="title-meta"><span>Obere Donaustraße 12</span><span>Offene Flamme seit dem ersten Tag</span><span>Mi–So 18:00</span></div>
+          </div>
+
+          <div class="hero-manifesto" data-window="0.46,0.7">
+            <span class="chapter-kicker">Kein Gas. Keine Abkürzungen.</span>
+            <p>Eiche, Asche<br />und Geduld.</p>
+          </div>
+
+          <div class="hero-closing" data-window="0.76,0.97">
+            <p>Das Feuer brennt.</p>
+            <span>Scrollen — der Tisch wartet</span>
+          </div>
+
+          <div class="scroll-cue" data-window="-0.12,0.18" aria-hidden="true"><i></i><span>Scrollen</span></div>
+          <div class="frame-counter" aria-hidden="true"><span data-frame-value>001</span><i></i><span>144</span></div>
+        </div>
+      </section>
+
+      <section id="story" class="scroll-chapter story clip-section" data-chapter="story" data-clip-section>
+        <div class="sticky-stage story-stage">
+          <video class="clip-video" data-clip data-src="./assets/media/clip-2-room.mp4" muted playsinline preload="none"></video>
+          <div class="story-fallback" aria-hidden="true"></div>
+          <div class="clip-shade" aria-hidden="true"></div>
+          <div class="chapter-index" aria-hidden="true">02</div>
+          <div class="story-copy">
+            <span class="chapter-kicker" data-window="0.06,0.4">Der Raum</span>
+            <h2 data-window="0.12,0.58">Sechs Gerichte.<br /><em>Ein Feuer.</em></h2>
+            <p data-window="0.4,0.75">Röstung auf der Kruste. Rauch im Gebälk.</p>
+            <p data-window="0.58,0.92">Sie hören Ihr Essen, bevor Sie es sehen.</p>
+          </div>
+          <p class="vertical-note">EMBER &amp; OAK · WIEN · MMXXVI</p>
+        </div>
+      </section>
+
+      <section id="menu" class="menu" data-chapter="menu">
+        <div class="menu-head" data-reveal>
+          <span class="chapter-kicker">Die Karte · 03</span>
+          <h2>Wenig steht geschrieben.<br /><em>Alles ist gut gebrannt.</em></h2>
+        </div>
+        <div class="menu-grid" data-menu>
+          <div class="menu-col" data-menu-col data-reveal>
+            <h3>Feuer</h3>
+            <ul>
+              <li class="dish">
+                <div class="dish-line"><span class="dish-name">Dry-Aged Ribeye 45′</span><i></i><span class="dish-price">54 €</span></div>
+                <p>Eichenglut, Knochenmark, schwarzer Knoblauch</p>
+              </li>
+              <li class="dish">
+                <div class="dish-line"><span class="dish-name">Geräucherte Short Ribs</span><i></i><span class="dish-price">38 €</span></div>
+                <p>Zwölf Stunden über der Glut, verkohlte Zwiebel</p>
+              </li>
+              <li class="dish">
+                <div class="dish-line"><span class="dish-name">Ganzer Wolfsbarsch</span><i></i><span class="dish-price">34 €</span></div>
+                <p>Glutsalz, Zitrone bis zur Süße gebrannt</p>
+              </li>
+            </ul>
+          </div>
+          <div class="menu-col" data-menu-col data-reveal>
+            <h3>Feld</h3>
+            <ul>
+              <li class="dish">
+                <div class="dish-line"><span class="dish-name">Rote Rübe aus der Kohle</span><i></i><span class="dish-price">14 €</span></div>
+                <p>In Asche vergraben, Molke, Dillöl</p>
+              </li>
+              <li class="dish">
+                <div class="dish-line"><span class="dish-name">Gebrannter Lauch</span><i></i><span class="dish-price">15 €</span></div>
+                <p>Haselnuss, braune Butter, Rauchsalz</p>
+              </li>
+              <li class="dish">
+                <div class="dish-line"><span class="dish-name">Im Feuer gebackenes Sauerteigbrot</span><i></i><span class="dish-price">7 €</span></div>
+                <p>Rauchbutter, noch warm von der Ofenwand</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="menu-note" data-reveal>Die Karte wechselt mit dem Holz. Das Feuer nicht.</p>
+      </section>
+
+      <section id="private" class="scroll-chapter private clip-section" data-chapter="private" data-clip-section>
+        <div class="sticky-stage private-stage">
+          <video class="clip-video" data-clip data-src="./assets/media/clip-3-craft.mp4" muted playsinline preload="none"></video>
+          <div class="private-fallback" aria-hidden="true">XII</div>
+          <div class="clip-shade" aria-hidden="true"></div>
+          <div class="chapter-index" aria-hidden="true">04</div>
+          <div class="private-copy">
+            <span class="chapter-kicker" data-window="0.08,0.5">Private Dining</span>
+            <h2 data-window="0.16,0.72">Ein Tisch. Zwölf Stühle.<br /><em>Das Feuer für Sie allein.</em></h2>
+            <a class="enquire-link" href="#reserve" data-window="0.42,0.92"><span>Anfragen</span><i aria-hidden="true">↗</i></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="find" class="find" data-chapter="find">
+        <div class="find-copy" data-reveal>
+          <span class="chapter-kicker">Anfahrt · 05</span>
+          <h2>Am Wasser,<br /><em>unter dem Rauch.</em></h2>
+          <dl class="find-details">
+            <div><dt>Adresse</dt><dd>Obere Donaustraße 12<br />1020 Wien</dd></div>
+            <div><dt>Öffnungszeiten</dt><dd>Mi–So<br />18:00–24:00</dd></div>
+            <div><dt>Tisch</dt><dd><a href="#reserve">Unten reservieren</a><br />oder an der Bar Platz nehmen</dd></div>
+          </dl>
+        </div>
+        <div class="map-placeholder" data-reveal aria-label="Stilisierte Karte — Obere Donaustraße 12, Wien">
+          <i class="map-river" aria-hidden="true"></i>
+          <b class="map-pin" aria-hidden="true"></b>
+          <span class="map-label">Obere Donaustraße 12</span>
+          <span class="map-compass" aria-hidden="true">N</span>
+        </div>
+      </section>
+
+      <section id="reserve" class="reserve" data-chapter="reserve">
+        <div class="reserve-halo" aria-hidden="true"></div>
+        <div class="reserve-inner" data-reveal>
+          <span class="chapter-kicker">Reservieren · 06</span>
+          <h2>Ein Platz<br /><em>am Feuer.</em></h2>
+          <p>Die Tische sind wenige. Das Feuer ist geduldig — der Raum nicht.</p>
+
+          <form class="reserve-form" data-reserve-form novalidate>
+            <label><span>Datum</span><input type="date" name="date" required /></label>
+            <label><span>Personen</span>
+              <select name="party" required>
+                <option value="2">2 Gäste</option>
+                <option value="3">3 Gäste</option>
+                <option value="4">4 Gäste</option>
+                <option value="5">5 Gäste</option>
+                <option value="6">6 Gäste</option>
+                <option value="7">7 Gäste</option>
+                <option value="8">8 Gäste</option>
+              </select>
+            </label>
+            <label><span>Ihr Name</span><input type="text" name="name" autocomplete="name" required /></label>
+            <label><span>E-Mail</span><input type="email" name="email" autocomplete="email" required /></label>
+            <button type="submit"><span>Tisch reservieren</span><i aria-hidden="true">↗</i></button>
+            <p class="form-status" data-form-status aria-live="polite"></p>
+          </form>
+        </div>
+        <footer>
+          <a class="wordmark" href="#hero"><span>EMBER</span><i></i><span>OAK</span></a>
+          <p>Fiktives Restaurant · Obere Donaustraße 12, Wien</p>
+          <p>© MMXXVI</p>
+        </footer>
+      </section>
+    </main>
+
+    <noscript><p class="noscript">JavaScript is required for the scroll-controlled fire.</p></noscript>
+    <script src="./assets/js/lenis.min.js"></script>
+    <script src="./assets/js/ember-oak.js"></script>
+  </body>
+</html>

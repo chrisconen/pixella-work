@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photovoltaik-Montage – Energieunabhängigkeit rund um die Uhr</title>
+  <meta name="description" content="Professionelle Photovoltaik-Anlagen: Bedarfserhebung, Planung und Montage aus einer Hand. Senken Sie Ihre Stromrechnung um bis zu 60 %." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: background 0.6s ease, color 0.6s ease;
+      line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      /* Core palette */
+      --amber:        #F59E0B;
+      --amber-light:  #FBBF24;
+      --amber-dark:   #D97706;
+      --navy:         #0B1120;
+      --navy-light:   #131B2E;
+      --charcoal:     #1A1F2E;
+      --cool-gray:    #64748B;
+      --text:         #E8EAF2;
+      --text-dim:     #ffffff;
+      --bg:           var(--navy);
+      --surface:      rgba(255,255,255,0.05);
+      --border-glass: rgba(255,255,255,0.10);
+      --shadow-glass: rgba(0,0,0,0.3);
+
+      /* State: day */
+      --day-bg:       #0B1628;
+      --day-accent:   var(--amber);
+      --day-overlay:  rgba(11,22,40,0.35);
+      --night-bg:     #070C18;
+      --night-accent: #4D7CFF;
+      --night-overlay: rgba(7,12,24,0.50);
+
+      --mode-accent:  var(--day-accent);
+      --mode-overlay: var(--day-overlay);
+
+      /* Typography */
+      --font-display: 'Instrument Serif', serif;
+      --font-body:    'Manrope', sans-serif;
+    }
+
+    /* ===== MODE CLASSES ===== */
+    body.night-mode {
+      --mode-accent:  var(--night-accent);
+      --mode-overlay: var(--night-overlay);
+    }
+
+    /* ===== REUSABLE ===== */
+    .glass {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-glass);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--amber), #D97706);
+      color: #0B1120;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(245,158,11,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-glass);
+    }
+    .btn-outline:hover {
+      border-color: var(--amber);
+      background: rgba(245,158,11,0.1);
+      color: var(--amber);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      color: var(--text-dim);
+      font-size: 1.1rem;
+      max-width: 640px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--charcoal); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cool-gray); }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      padding: 10px 20px;
+      border-radius: 100px;
+      background: rgba(11,17,32,0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.4s ease;
+      max-width: 90vw;
+    }
+    .navbar.scrolled {
+      background: rgba(11,17,32,0.85);
+      border-color: rgba(255,255,255,0.12);
+      top: 12px;
+    }
+    .navbar a {
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .navbar a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+    .navbar a.active {
+      color: var(--amber);
+      background: rgba(245,158,11,0.1);
+    }
+
+    /* ===== HEADER EXTRAS (logo + CTA) ===== */
+    .header-extras {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 32px;
+      pointer-events: none;
+    }
+    .header-extras > * { pointer-events: auto; }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--amber); }
+    .logo .sun-icon { color: var(--amber); }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .hero-images {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-images video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--mode-overlay);
+      transition: background 1s ease;
+      z-index: 1;
+    }
+    /* gradient overlay at bottom */
+    .hero-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .hero-heading {
+      font-family: var(--font-body);
+      font-size: clamp(2rem, 7vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .hero-heading .highlight {
+      background: linear-gradient(135deg, var(--amber-light), var(--amber-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .btn-consult {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: var(--text);
+      padding: 16px 40px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-consult:hover {
+      transform: translateY(-3px);
+      border-color: rgba(245,158,11,0.4);
+      background: rgba(245,158,11,0.08);
+      box-shadow: 0 12px 40px rgba(245,158,11,0.15);
+    }
+
+    /* ===== RECTANGULAR DAY/NIGHT TOGGLE ===== */
+    .hero-toggle {
+      display: inline-flex;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      margin-bottom: 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .hero-toggle .toggle-half {
+      padding: 12px 32px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      min-width: 130px;
+      text-align: center;
+    }
+    .hero-toggle .toggle-half.day-half {
+      background: rgba(230, 225, 215, 0.85);
+      color: #0B1120;
+    }
+    .hero-toggle .toggle-half.night-half {
+      background: rgba(10, 18, 40, 0.85);
+      color: #8A8FA3;
+    }
+    /* Active state: glow + white border */
+    .hero-toggle .toggle-half.active {
+      position: relative;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+    }
+    .hero-toggle .toggle-half.day-half.active {
+      border: 2px solid #ffffff;
+      background: rgba(240, 235, 225, 0.95);
+      color: #0B1120;
+      box-shadow: 0 0 24px rgba(255,255,255,0.2), inset 0 0 12px rgba(255,255,255,0.06);
+    }
+    .hero-toggle .toggle-half.night-half.active {
+      border: 2px solid #ffffff;
+      background: rgba(12, 20, 45, 0.95);
+      color: #ffffff;
+      box-shadow: 0 0 24px rgba(255,255,255,0.2), inset 0 0 12px rgba(255,255,255,0.06);
+    }
+    /* No border where they meet — inner edges */
+    .hero-toggle .toggle-half.day-half {
+      border-right: none;
+    }
+    .hero-toggle .toggle-half.day-half.active {
+      border-right: none;
+    }
+    .hero-toggle .toggle-half.night-half.active {
+      border-left: none;
+    }
+    .hero-toggle .toggle-half:not(.active) {
+      border: 2px solid transparent;
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+    .section-separator {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #4169E1, transparent);
+      margin: 0;
+      border: none;
+      position: relative;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 12px rgba(65,105,225,0.3), 0 0 4px rgba(65,105,225,0.15);
+    }
+
+    /* ===== TECHNICAL SECTION ===== */
+    #technologia {
+      background: var(--navy-light);
+    }
+
+    /* Two-column layout */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 50px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .tech-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* Left column */
+    .tech-diagram-col {
+      position: relative;
+    }
+
+    /* Right: video + off-grid info */
+    .tech-video-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .video-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      background: rgba(0,0,0,0.3);
+      aspect-ratio: 16 / 9;
+    }
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .off-grid-card {
+      background: var(--surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(12px);
+    }
+    .off-grid-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .off-grid-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .off-grid-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .off-grid-item .icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border-glass);
+      background: rgba(255,255,255,0.04);
+    }
+    .off-grid-item .text h5 {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+      color: var(--text);
+    }
+    .off-grid-item .text p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* ===== SAVINGS CALCULATOR ===== */
+    #kalkulator {
+      position: relative;
+      background: var(--bg);
+      background-image: url('img/napelem-rendszer-kalkulator-bg.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    #kalkulator::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 12, 24, 0.75);
+      z-index: 0;
+      pointer-events: none;
+    }
+    #kalkulator .container {
+      position: relative;
+      z-index: 1;
+    }
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 50px;
+      align-items: start;
+    }
+    @media (max-width: 820px) {
+      .calculator-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .calc-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      background: rgba(7, 12, 24, 0.65);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .calc-group label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+    .calc-group label span {
+      color: var(--amber);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.12);
+      outline: none;
+      transition: background 0.2s;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--amber-light), var(--amber-dark));
+      cursor: pointer;
+      box-shadow: 0 2px 12px rgba(245,158,11,0.4);
+      transition: transform 0.2s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--amber-light), var(--amber-dark));
+      cursor: pointer;
+      border: none;
+    }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+
+    .calc-results {
+      background: rgba(7, 12, 24, 0.65);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 40px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .calc-results h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+    .result-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .result-item {
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+    .result-item .value {
+      font-family: var(--font-body);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1.2;
+    }
+    .result-item .label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .result-item.accent-blue .value { color: var(--night-accent); }
+    .result-item.accent-green .value { color: #34D399; }
+
+    /* ===== WEBSHOP SLIDER ===== */
+    #webshop {
+      background: var(--navy-light);
+      overflow: hidden;
+    }
+    .webshop-wrapper {
+      position: relative;
+      margin-top: 50px;
+      overflow: hidden;
+      padding: 8px 0;
+    }
+    .webshop-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .product-card {
+      flex: 0 0 calc(25% - 18px);
+      min-width: 220px;
+      background: rgba(11, 17, 32, 0.7);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .product-card:hover {
+      border-color: rgba(255,255,255,0.18);
+      transform: translateY(-4px);
+    }
+    .product-card .card-badge {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .product-card .watt-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 100px;
+      background: rgba(245,158,11,0.15);
+      border: 1px solid rgba(245,158,11,0.2);
+      color: var(--amber-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .product-card .fav-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1rem;
+      color: var(--text-dim);
+      flex-shrink: 0;
+    }
+    .product-card .fav-btn:hover {
+      border-color: rgba(239,68,68,0.4);
+      background: rgba(239,68,68,0.1);
+    }
+    .product-card .fav-btn.liked {
+      color: #EF4444;
+      border-color: #EF4444;
+      background: rgba(239,68,68,0.12);
+    }
+    .product-card .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-card .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .product-card .card-img .placeholder-img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      opacity: 0.3;
+    }
+    .product-card .card-title {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .product-card .card-title span {
+      color: var(--amber);
+    }
+    .product-card .stars {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 14px;
+    }
+    .product-card .stars .star {
+      color: #FBBF24;
+      font-size: 0.9rem;
+    }
+    .product-card .stars .star.empty {
+      color: rgba(255,255,255,0.15);
+    }
+    .product-card .stars .rating-num {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-left: 6px;
+    }
+    .product-card .card-price {
+      font-family: var(--font-body);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--amber);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .product-card .card-price .price-unit {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-dim);
+    }
+    .product-card .qty-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .product-card .qty-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-glass);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .product-card .qty-control button {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      background: transparent;
+      transition: background 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .product-card .qty-control button:hover {
+      background: rgba(255,255,255,0.06);
+    }
+    .product-card .qty-control .qty-num {
+      width: 40px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-left: 1px solid var(--border-glass);
+      border-right: 1px solid var(--border-glass);
+      padding: 6px 0;
+    }
+    .product-card .stock-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .product-card .stock-status.in-stock {
+      color: #34D399;
+    }
+    .product-card .stock-status.on-order {
+      color: var(--amber);
+    }
+    .product-card .stock-status .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .product-card .stock-status.in-stock .dot {
+      background: #34D399;
+    }
+    .product-card .stock-status.on-order .dot {
+      background: var(--amber);
+    }
+    .webshop-arrows {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .webshop-arrows button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .webshop-arrows button:hover {
+      background: rgba(245,158,11,0.1);
+      border-color: rgba(245,158,11,0.3);
+      color: var(--amber);
+    }
+    .webshop-arrows button:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+    @media (max-width: 1100px) {
+      .product-card { flex: 0 0 calc(33.333% - 16px); min-width: 240px; }
+    }
+    @media (max-width: 800px) {
+      .product-card { flex: 0 0 calc(50% - 12px); min-width: 220px; }
+    }
+    @media (max-width: 500px) {
+      .product-card { flex: 0 0 100%; min-width: 0; }
+    }
+
+    /* ===== GALLERY ===== */
+    #galeria {
+      background: var(--bg);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .gallery-grid .gallery-item:first-child {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      background: var(--surface);
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s;
+      position: relative;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .gallery-grid .gallery-item:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+      }
+    }
+    @media (max-width: 500px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== CTA SECTION ===== */
+    #kapcsolat {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
+    }
+    .cta-box {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 32px;
+      padding: 80px 40px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+    .cta-meter {
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.12);
+      box-shadow: 0 0 30px rgba(65,105,225,0.25), 0 0 60px rgba(65,105,225,0.1);
+    }
+    .cta-meter video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 960px) {
+      .cta-meter {
+        width: 120px;
+        height: 120px;
+        right: -30px;
+      }
+    }
+    @media (max-width: 768px) {
+      .cta-meter {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin: 0 auto 20px;
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .cta-box h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .cta-box p {
+      color: var(--text-dim);
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #060B16;
+      padding: 60px 0 30px;
+      border-top: 1px solid var(--border-glass);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    .footer-brand .logo { font-size: 1.3rem; margin-bottom: 12px; display: block; }
+    .footer-brand p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      max-width: 300px;
+      line-height: 1.7;
+    }
+    .footer-col h4 {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--amber); }
+
+    /* Newsletter */
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 18px;
+      border-radius: 100px;
+      border: 1px solid var(--border-glass);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border 0.3s;
+    }
+    .newsletter-form input::placeholder { color: var(--text-dim); }
+    .newsletter-form input:focus { border-color: var(--amber); }
+    .newsletter-form button {
+      padding: 12px 24px;
+      border-radius: 100px;
+      background: linear-gradient(135deg, var(--amber), #D97706);
+      color: #0B1120;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover {
+      transform: scale(1.04);
+    }
+
+    /* Social */
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border-glass);
+      color: var(--text-dim);
+      transition: all 0.3s;
+      font-size: 1.2rem;
+    }
+    .social-links a:hover {
+      background: rgba(245,158,11,0.15);
+      border-color: var(--amber);
+      color: var(--amber);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-glass);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    /* ===== BACK TO TOP ===== */
+    #back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 900;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px) scale(0.9);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+    #back-to-top:hover {
+      border-color: var(--amber);
+      background: rgba(245,158,11,0.15);
+      color: var(--amber);
+      transform: translateY(-4px);
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .header-extras {
+        padding: 16px 20px;
+      }
+      .logo { font-size: 1.2rem; }
+      .header-extras .btn-outline {
+        padding: 10px 18px;
+        font-size: 0.82rem;
+      }
+      .navbar {
+        top: auto;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 12px;
+        gap: 4px;
+        overflow-x: auto;
+        white-space: nowrap;
+        max-width: 96vw;
+        border-radius: 60px;
+      }
+      .navbar a {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+      }
+      .navbar.scrolled { top: auto; bottom: 16px; }
+      .hero-content { padding-top: 120px; }
+      .hero-heading { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+      .result-card { grid-template-columns: 1fr 1fr; }
+      .toggle-switch { width: 60px; height: 34px; }
+      .toggle-knob { width: 26px; height: 26px; top: 3px; left: 3px; }
+      body.night-mode .toggle-knob { left: 30px; }
+      section { padding: 60px 0; }
+      .cta-box { padding: 40px 24px; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+    .hero-content {
+      animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Pulse glow — subtle glass pulse */
+    @keyframes pulseGlow {
+      0%, 100% { border-color: rgba(255,255,255,0.12); box-shadow: 0 4px 24px rgba(0,0,0,0.2); }
+      50%      { border-color: rgba(245,158,11,0.3); box-shadow: 0 4px 36px rgba(245,158,11,0.12); }
+    }
+    .btn-consult {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER EXTRAS ===== -->
+  <div class="header-extras">
+    <div class="logo">
+      <span class="sun-icon">☀</span> Solar<span>Tech</span>
+    </div>
+    <a href="#kapcsolat" class="btn btn-outline">Beratung</a>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="active">Start</a>
+    <a href="#technologia">Anlage</a>
+    <a href="#kalkulator">Rechner</a>
+    <a href="#kapcsolat">Kontakt</a>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-images">
+      <video id="hero-video" src="img/napelem-telepites-hero-bg.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <!-- Rectangular day/night toggle -->
+      <div class="hero-toggle" id="hero-toggle" role="button" tabindex="0" aria-label="Zwischen Tag- und Nachtmodus wechseln">
+        <span class="toggle-half day-half active" data-mode="day">TAG 0 KW/H</span>
+        <span class="toggle-half night-half" data-mode="night">NACHT 0 KW/H</span>
+      </div>
+
+      <h1 class="hero-heading" id="hero-heading">
+        Übernehmen Sie die Kontrolle<br />
+        <span class="highlight">-> Off-Grid-Photovoltaik</span>
+      </h1>
+
+      <p class="hero-sub" id="hero-sub">
+        Maßgeschneiderte Photovoltaik-Anlagen — bis zu 40–60 % weniger Stromkosten.
+        Planung, Montage und Betrieb aus einer Hand.
+      </p>
+    </div>
+  </section>
+
+  <hr class="section-separator" />
+
+  <!-- ===== TECHNICAL SECTION ===== -->
+  <section id="technologia">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title reveal">Wie ist die Anlage aufgebaut?</h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1">
+          Vom Modul bis zur Steckdose greift jedes Teil ineinander, damit Ihr Zuhause
+          energieunabhängig wird.
+        </p>
+      </div>
+
+      <div class="tech-grid reveal reveal-delay-2">
+        <!-- LEFT: off-grid description -->
+        <div class="tech-diagram-col">
+          <div class="off-grid-card glass">
+            <h4>Die Kernkomponenten einer Off-Grid-Anlage</h4>
+            <div class="off-grid-list">
+              <div class="off-grid-item">
+                <div class="icon-box">☀</div>
+                <div class="text">
+                  <h5>Solarmodule</h5>
+                  <p>Wandeln Sonnenlicht in Gleichstrom um. Die Anlagengröße richtet sich nach Dachfläche und Energiebedarf.</p>
+                </div>
+              </div>
+              <div class="off-grid-item">
+                <div class="icon-box">⚡</div>
+                <div class="text">
+                  <h5>Laderegler</h5>
+                  <p>Regelt den Energiefluss vom Modul zur Batterie und schützt die Zellen vor Überladung.</p>
+                </div>
+              </div>
+              <div class="off-grid-item">
+                <div class="icon-box">🔋</div>
+                <div class="text">
+                  <h5>Batteriespeicher</h5>
+                  <p>Speichert die erzeugte Energie, damit sie nachts und bei trübem Wetter zur Verfügung steht.</p>
+                </div>
+              </div>
+              <div class="off-grid-item">
+                <div class="icon-box">🔄</div>
+                <div class="text">
+                  <h5>Wechselrichter</h5>
+                  <p>Wandelt den Gleichstrom (DC) der Batterie in 230 V Wechselstrom (AC) für die Haushaltsgeräte um.</p>
+                </div>
+              </div>
+              <div class="off-grid-item">
+                <div class="icon-box">🏠</div>
+                <div class="text">
+                  <h5>Verbraucher</h5>
+                  <p>Die Geräte im Haus (Licht, Kühlschrank, TV, Computer), die den sauberen Solarstrom nutzen.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: video -->
+        <div class="tech-video-col">
+          <div class="video-container glass">
+            <video src="img/napelemes-rendszer-mukodese.mp4" autoplay muted loop playsinline></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-separator" />
+
+  <!-- ===== CALCULATOR SECTION ===== -->
+  <section id="kalkulator">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title reveal">Ersparnisrechner</h2>
+          <p class="section-subtitle mx-auto reveal reveal-delay-1">
+          Sehen Sie, wie viel eine maßgeschneiderte Photovoltaik-Anlage spart.
+          Stellen Sie Ihren Bedarf ein — das Ergebnis erscheint sofort.
+        </p>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin-top:8px;">* Die berechneten Werte dienen der Orientierung.</p>
+      </div>
+
+      <div class="calculator-grid reveal reveal-delay-2">
+        <div class="calc-controls">
+          <div class="calc-group">
+            <label>
+              Anlagengröße
+              <span id="system-size-val">6 kWp</span>
+            </label>
+            <input type="range" id="system-size" min="3" max="15" value="6" step="0.5" />
+            <div class="range-labels">
+              <span>3 kWp</span>
+              <span>15 kWp</span>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label>
+              Täglicher Verbrauch
+              <span id="consumption-val">20 kWh</span>
+            </label>
+            <input type="range" id="consumption" min="5" max="80" value="20" step="1" />
+            <div class="range-labels">
+              <span>5 kWh</span>
+              <span>80 kWh</span>
+            </div>
+          </div>
+
+          <div class="calc-group">
+            <label>
+              Strompreis
+              <span id="price-val">0,25 €/kWh</span>
+            </label>
+            <input type="range" id="price" min="0.15" max="0.45" value="0.25" step="0.01" />
+            <div class="range-labels">
+              <span>0,15 €</span>
+              <span>0,45 €</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-results">
+          <h3>📊 Jährliche Ersparnis</h3>
+          <div class="result-card">
+            <div class="result-item">
+              <div class="value" id="annual-savings">205.200</div>
+              <div class="label">€ / Jahr</div>
+            </div>
+            <div class="result-item accent-green">
+              <div class="value" id="co2-saving">1.674</div>
+              <div class="label">kg CO₂ / Jahr</div>
+            </div>
+            <div class="result-item accent-blue">
+              <div class="value" id="payback">14,6</div>
+              <div class="label">Jahre Amortisation</div>
+            </div>
+            <div class="result-item">
+              <div class="value" id="energy-produced">5.400</div>
+              <div class="label">kWh / Jahr Ertrag</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-separator" />
+
+  <!-- ===== WEBSHOP SECTION ===== -->
+  <section id="webshop">
+    <div class="container text-center">
+      <h2 class="section-title reveal">Off-Grid-Photovoltaikanlagen</h2>
+      <p class="section-subtitle mx-auto reveal reveal-delay-1">
+        Wählen Sie die Off-Grid-Anlage in der passenden Leistung — vollständige Energieunabhängigkeit, überall und jederzeit.
+      </p>
+
+      <div class="webshop-wrapper reveal reveal-delay-2">
+        <div class="webshop-track" id="webshop-track">
+
+          <!-- 400W -->
+          <div class="product-card" data-price="129000" data-watt="400W" data-rating="4.2" data-stock="6">
+            <div class="card-badge">
+              <span class="watt-badge">400W</span>
+              <button class="fav-btn" aria-label="Zu den Favoriten hinzufügen">♡</button>
+            </div>
+            <div class="card-img">
+              <img src="img/off-grid-napelem-400w.webp" alt="Off-Grid-Photovoltaikanlage 400 W" loading="lazy" />
+            </div>
+            <div class="card-title">Off-Grid-Anlage <span>400W</span></div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+              <span class="rating-num">4.2</span>
+            </div>
+            <div class="card-price"><span class="price-val">329</span> <span class="price-unit">€</span></div>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button class="qty-minus">−</button>
+                <span class="qty-num">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+              <span class="stock-status in-stock"><span class="dot"></span> Auf Lager: 6 Stück</span>
+            </div>
+          </div>
+
+          <!-- 800W -->
+          <div class="product-card" data-price="219000" data-watt="800W" data-rating="4.5" data-stock="12">
+            <div class="card-badge">
+              <span class="watt-badge">800W</span>
+              <button class="fav-btn" aria-label="Zu den Favoriten hinzufügen">♡</button>
+            </div>
+            <div class="card-img">
+              <img src="img/off-grid-napelem-800w.webp" alt="Off-Grid-Photovoltaikanlage 800 W" loading="lazy" />
+            </div>
+            <div class="card-title">Off-Grid-Anlage <span>800W</span></div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+              <span class="rating-num">4.5</span>
+            </div>
+            <div class="card-price"><span class="price-val">559</span> <span class="price-unit">€</span></div>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button class="qty-minus">−</button>
+                <span class="qty-num">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+              <span class="stock-status in-stock"><span class="dot"></span> Auf Lager: 12 Stück</span>
+            </div>
+          </div>
+
+          <!-- 1200W -->
+          <div class="product-card" data-price="329000" data-watt="1200W" data-rating="4.7" data-stock="0">
+            <div class="card-badge">
+              <span class="watt-badge">1200W</span>
+              <button class="fav-btn" aria-label="Zu den Favoriten hinzufügen">♡</button>
+            </div>
+            <div class="card-img">
+              <img src="img/off-grid-napelem-1200w.webp" alt="Off-Grid-Photovoltaikanlage 1200 W" loading="lazy" />
+            </div>
+            <div class="card-title">Off-Grid-Anlage <span>1200W</span></div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+              <span class="rating-num">4.7</span>
+            </div>
+            <div class="card-price"><span class="price-val">839</span> <span class="price-unit">€</span></div>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button class="qty-minus">−</button>
+                <span class="qty-num">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+              <span class="stock-status on-order"><span class="dot"></span> Auf Bestellung</span>
+            </div>
+          </div>
+
+          <!-- 2400W -->
+          <div class="product-card" data-price="589000" data-watt="2400W" data-rating="4.3" data-stock="9">
+            <div class="card-badge">
+              <span class="watt-badge">2400W</span>
+              <button class="fav-btn" aria-label="Zu den Favoriten hinzufügen">♡</button>
+            </div>
+            <div class="card-img">
+              <img src="img/off-grid-napelem-1200w.webp" alt="Off-Grid-Photovoltaikanlage 1200 W" loading="lazy" />
+            </div>
+            <div class="card-title">Off-Grid-Anlage <span>2400W</span></div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+              <span class="rating-num">4.3</span>
+            </div>
+            <div class="card-price"><span class="price-val">1.509</span> <span class="price-unit">€</span></div>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button class="qty-minus">−</button>
+                <span class="qty-num">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+              <span class="stock-status in-stock"><span class="dot"></span> Auf Lager: 9 Stück</span>
+            </div>
+          </div>
+
+          <!-- 3200W -->
+          <div class="product-card" data-price="769000" data-watt="3200W" data-rating="4.8" data-stock="0">
+            <div class="card-badge">
+              <span class="watt-badge">3200W</span>
+              <button class="fav-btn" aria-label="Zu den Favoriten hinzufügen">♡</button>
+            </div>
+            <div class="card-img">
+              <img src="img/off-grid-napelem-1200w.webp" alt="Off-Grid-Photovoltaikanlage 1200 W" loading="lazy" />
+            </div>
+            <div class="card-title">Off-Grid-Anlage <span>3200W</span></div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+              <span class="rating-num">4.8</span>
+            </div>
+            <div class="card-price"><span class="price-val">1.969</span> <span class="price-unit">€</span></div>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button class="qty-minus">−</button>
+                <span class="qty-num">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+              <span class="stock-status on-order"><span class="dot"></span> Auf Bestellung</span>
+            </div>
+          </div>
+
+          <!-- 4000W -->
+          <div class="product-card" data-price="949000" data-watt="4000W" data-rating="4.6" data-stock="4">
+            <div class="card-badge">
+              <span class="watt-badge">4000W</span>
+              <button class="fav-btn" aria-label="Zu den Favoriten hinzufügen">♡</button>
+            </div>
+            <div class="card-img">
+              <img src="img/off-grid-napelem-1200w.webp" alt="Off-Grid-Photovoltaikanlage 1200 W" loading="lazy" />
+            </div>
+            <div class="card-title">Off-Grid-Anlage <span>4000W</span></div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+              <span class="rating-num">4.6</span>
+            </div>
+            <div class="card-price"><span class="price-val">2.429</span> <span class="price-unit">€</span></div>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button class="qty-minus">−</button>
+                <span class="qty-num">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+              <span class="stock-status in-stock"><span class="dot"></span> Auf Lager: 4 Stück</span>
+            </div>
+          </div>
+
+          <!-- 6000W -->
+          <div class="product-card" data-price="1289000" data-watt="6000W" data-rating="4.9" data-stock="0">
+            <div class="card-badge">
+              <span class="watt-badge">6000W</span>
+              <button class="fav-btn" aria-label="Zu den Favoriten hinzufügen">♡</button>
+            </div>
+            <div class="card-img">
+              <img src="img/off-grid-napelem-1200w.webp" alt="Off-Grid-Photovoltaikanlage 1200 W" loading="lazy" />
+            </div>
+            <div class="card-title">Off-Grid-Anlage <span>6000W</span></div>
+            <div class="stars">
+              <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star empty">★</span>
+              <span class="rating-num">4.9</span>
+            </div>
+            <div class="card-price"><span class="price-val">3.299</span> <span class="price-unit">€</span></div>
+            <div class="qty-row">
+              <div class="qty-control">
+                <button class="qty-minus">−</button>
+                <span class="qty-num">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+              <span class="stock-status on-order"><span class="dot"></span> Auf Bestellung</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="webshop-arrows">
+          <button id="shop-prev" aria-label="Zurück">‹</button>
+          <button id="shop-next" aria-label="Weiter">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-separator" />
+
+  <!-- ===== GALLERY SECTION ===== -->
+  <section id="galeria">
+    <div class="container text-center">
+      <h2 class="section-title reveal">Unsere Referenzen</h2>
+      <p class="section-subtitle mx-auto reveal reveal-delay-1">
+        Sehen Sie Anlagen, die wir montiert haben — auf Wohnhäusern, Garagen und Betriebsgebäuden.
+      </p>
+
+      <div class="gallery-grid reveal reveal-delay-2">
+        <div class="gallery-item">
+          <img src="img/napelem-galeria-1.jpg" alt="Referenz Photovoltaik-Montage 1" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/napelem-galeria-2.jpg" alt="Referenz Photovoltaik-Montage 2" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/napelem-galeria-3.jpg" alt="Referenz Photovoltaik-Montage 3" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/napelem-galeria-4.jpg" alt="Referenz Photovoltaik-Montage 4" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/napelem-galeria-5.jpg" alt="Referenz Photovoltaik-Montage 5" loading="lazy" />
+        </div>
+        <div class="gallery-item">
+          <img src="img/napelem-galeria-6.jpg" alt="Referenz Photovoltaik-Montage 6" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-separator" />
+
+  <!-- ===== CTA SECTION ===== -->
+  <section id="kapcsolat">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-meter">
+          <video src="img/villanyora.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <h2>Bereit für den Wechsel?</h2>
+        <p>
+          Fordern Sie Ihre kostenlose, persönliche Beratung an. Wir erheben
+          Ihren Bedarf und empfehlen die passende Lösung.
+        </p>
+        <a href="#" class="btn-consult" style="display:inline-flex;">
+          <span>📞</span> Jetzt Termin buchen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo"><span class="sun-icon">☀</span> Solar<span>Tech</span></span>
+          <p>Planung, Montage und Wartung professioneller Photovoltaik-Anlagen. Für eine nachhaltige Zukunft – und Ihre eigene Ersparnis.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Start</a></li>
+            <li><a href="#technologia">Anlage</a></li>
+            <li><a href="#kalkulator">Rechner</a></li>
+            <li><a href="#kapcsolat">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="font-size:0.88rem;color:var(--text-dim);line-height:1.7;margin-bottom:8px;">
+            Melden Sie sich an — aktuelle Neuigkeiten und Angebote.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Köszönjük a feliratkozást!');">
+             <input type="email" placeholder="Ihre E-Mail-Adresse" required aria-label="E-Mail-Adresse" />
+            <button type="submit">Anmelden</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 SolarTech. Alle Rechte vorbehalten.</span>
+        <span>Website erstellt von: <a href="https://conendigital.hu" target="_blank" rel="noopener" style="color:var(--amber);text-decoration:underline;">PIXELLA Webdesign</a> — Webdesign Österreich</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="back-to-top" aria-label="Nach oben" title="Nach oben">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ===== JS ===== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // --- Day/Night Toggle ---
+      const heroToggle = document.getElementById('hero-toggle');
+      const toggleHalves = document.querySelectorAll('.toggle-half');
+      const heroHeading = document.getElementById('hero-heading');
+      const heroSub = document.getElementById('hero-sub');
+      const heroVideo = document.getElementById('hero-video');
+
+      const dayHeadingHTML = 'Übernehmen Sie die Kontrolle<br /><span class="highlight">-> Off-Grid-Photovoltaik</span>';
+      const nightHeadingHTML = 'Energiafüggetlenség<br /><span class="highlight">éjjel-nappal</span>';
+      const daySubText = 'Testreszabott napelem rendszerek — akár 40-60%-kal csökkentve az áramszámlád. Professzionális tervezés, kivitelezés és üzemeltetés egy kézből.';
+      const nightSubText = 'Batteriespeicheros tárolóval a megtermelt energia éjszaka is rendelkezésedre áll. Teljes energiafüggetlenség, akár 80%-os önellátási aránnyal.';
+
+      function setMode(isNight) {
+        if (isNight) {
+          document.body.classList.add('night-mode');
+          toggleHalves.forEach(function(h) { h.classList.remove('active'); });
+          document.querySelector('.toggle-half.night-half').classList.add('active');
+          heroHeading.innerHTML = nightHeadingHTML;
+          heroSub.textContent = nightSubText;
+          if (heroVideo) { heroVideo.currentTime = 15; }
+        } else {
+          document.body.classList.remove('night-mode');
+          toggleHalves.forEach(function(h) { h.classList.remove('active'); });
+          document.querySelector('.toggle-half.day-half').classList.add('active');
+          heroHeading.innerHTML = dayHeadingHTML;
+          heroSub.textContent = daySubText;
+          if (heroVideo) { heroVideo.currentTime = 0; }
+        }
+      }
+
+      heroToggle.addEventListener('click', function(e) {
+        const isNight = !document.body.classList.contains('night-mode');
+        setMode(isNight);
+      });
+      heroToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          heroToggle.click();
+        }
+      });
+
+      // --- Smooth Scroll for nav links ---
+      document.querySelectorAll('.navbar a, .btn-consult[href^="#"], .footer-col a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          const href = link.getAttribute('href');
+          if (!href || href === '#') return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const offset = 100;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        });
+      });
+
+      // --- Navbar active link on scroll ---
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.navbar a');
+
+      function updateActiveNav() {
+        const scrollPos = window.pageYOffset + 200;
+        let current = 'hero';
+        sections.forEach(function(section) {
+          const top = section.offsetTop;
+          const bottom = top + section.offsetHeight;
+          if (scrollPos >= top && scrollPos < bottom) {
+            current = section.getAttribute('id');
+          }
+        });
+        navLinks.forEach(function(link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+      }
+
+      // --- Navbar shrink on scroll ---
+      const navbar = document.getElementById('navbar');
+
+      function updateNavbarScroll() {
+        if (window.pageYOffset > 80) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+
+      // --- Back to Top ---
+      const backToTop = document.getElementById('back-to-top');
+
+      function updateBackToTop() {
+        if (window.pageYOffset > 500) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      }
+
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // --- Scroll handler ---
+      function onScroll() {
+        updateActiveNav();
+        updateNavbarScroll();
+        updateBackToTop();
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      onScroll(); // initial
+
+      // --- Scroll Reveal (IntersectionObserver) ---
+      if ('IntersectionObserver' in window) {
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        revealEls.forEach(function(el) { observer.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+      }
+
+      // --- Calculator ---
+      const sizeSlider = document.getElementById('system-size');
+      const consumptionSlider = document.getElementById('consumption');
+      const priceSlider = document.getElementById('price');
+      const sizeVal = document.getElementById('system-size-val');
+      const consumptionVal = document.getElementById('consumption-val');
+      const priceVal = document.getElementById('price-val');
+      const annualSavingsEl = document.getElementById('annual-savings');
+      const co2SavingEl = document.getElementById('co2-saving');
+      const paybackEl = document.getElementById('payback');
+      const energyProducedEl = document.getElementById('energy-produced');
+
+      function updateCalculator() {
+        const size = parseFloat(sizeSlider.value);       // kWp
+        const consumption = parseFloat(consumptionSlider.value); // kWh/day
+        const price = parseFloat(priceSlider.value);      // €/kWh
+
+        sizeVal.textContent = size + ' kWp';
+        consumptionVal.textContent = consumption + ' kWh';
+        priceVal.textContent = price.toFixed(2).replace('.', ',') + ' €/kWh';
+
+        // Annual production: ~950 kWh per kWp in Austria (conservative)
+        const annualProduction = size * 950;
+        // Daily consumption covered
+        const dailyCoverage = Math.min(consumption, annualProduction / 365);
+        // Annual bill saving
+        const annualSaving = Math.round(dailyCoverage * 365 * price);
+        // CO2 saving ~ 0.16 kg CO2/kWh (Austrian mix, hydro-heavy)
+        const co2 = Math.round(annualProduction * 0.16);
+        // System cost estimate: ~1,400 EUR/kWp installed in Austria (typical)
+        const systemCost = size * 1400;
+        // Payback in years
+        const payback = annualSaving > 0 ? (systemCost / annualSaving) : 0;
+
+        annualSavingsEl.textContent = annualSaving.toLocaleString('de-DE');
+        co2SavingEl.textContent = co2.toLocaleString('de-DE');
+        paybackEl.textContent = payback.toFixed(1).replace('.', ',');
+        energyProducedEl.textContent = annualProduction.toLocaleString('de-DE');
+      }
+
+      sizeSlider.addEventListener('input', updateCalculator);
+      consumptionSlider.addEventListener('input', updateCalculator);
+      priceSlider.addEventListener('input', updateCalculator);
+      updateCalculator();
+
+      // --- Touch device detection for smoother range inputs ---
+      if ('ontouchstart' in window) {
+        document.querySelectorAll('input[type="range"]').forEach(function(el) {
+          el.style.touchAction = 'none';
+        });
+      }
+
+      // === WEBSHOP SLIDER ===
+      (function() {
+        const track = document.getElementById('webshop-track');
+        if (!track) return;
+        const cards = track.querySelectorAll('.product-card');
+        const totalCards = cards.length;
+        let currentIdx = 0;
+        let autoplayTimer = null;
+        let isPaused = false;
+
+        function getVisibleCount() {
+          if (window.innerWidth <= 500) return 1;
+          if (window.innerWidth <= 800) return 2;
+          if (window.innerWidth <= 1100) return 3;
+          return 4;
+        }
+
+        function slideTo(index) {
+          const visible = getVisibleCount();
+          const maxIdx = Math.max(0, totalCards - visible);
+          if (index < 0) index = 0;
+          if (index > maxIdx) index = maxIdx;
+          currentIdx = index;
+          const card = cards[0];
+          const gap = 24;
+          const cardWidth = card.offsetWidth;
+          const offset = currentIdx * (cardWidth + gap);
+          track.style.transform = 'translateX(-' + offset + 'px)';
+          var prevBtn = document.getElementById('shop-prev');
+          var nextBtn = document.getElementById('shop-next');
+          if (prevBtn) prevBtn.disabled = currentIdx === 0;
+          if (nextBtn) nextBtn.disabled = currentIdx >= maxIdx;
+        }
+
+        function nextSlide() {
+          const visible = getVisibleCount();
+          const maxIdx = Math.max(0, totalCards - visible);
+          if (currentIdx < maxIdx) {
+            slideTo(currentIdx + 1);
+          }
+          // stop at last card — no loop
+        }
+
+        function prevSlide() {
+          const visible = getVisibleCount();
+          const maxIdx = Math.max(0, totalCards - visible);
+          if (currentIdx > 0) {
+            slideTo(currentIdx - 1);
+          } else {
+            slideTo(maxIdx); // jump to last on prev from first
+          }
+        }
+
+        function startAutoplay() {
+          stopAutoplay();
+          autoplayTimer = setInterval(function() {
+            if (!isPaused) nextSlide();
+          }, 60000);
+        }
+
+        function stopAutoplay() {
+          if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+          }
+        }
+
+        // arrows
+        var prevBtn = document.getElementById('shop-prev');
+        var nextBtn = document.getElementById('shop-next');
+        if (prevBtn) prevBtn.addEventListener('click', function() { stopAutoplay(); prevSlide(); startAutoplay(); });
+        if (nextBtn) nextBtn.addEventListener('click', function() { stopAutoplay(); nextSlide(); startAutoplay(); });
+
+        // mouseover pause
+        track.addEventListener('mouseenter', function() { isPaused = true; });
+        track.addEventListener('mouseleave', function() { isPaused = false; });
+
+        // resize
+        window.addEventListener('resize', function() { slideTo(currentIdx); });
+
+        // init
+        slideTo(0);
+        startAutoplay();
+
+        // === Quantity controls ===
+        cards.forEach(function(card) {
+          var minusBtn = card.querySelector('.qty-minus');
+          var plusBtn = card.querySelector('.qty-plus');
+          var qtyNum = card.querySelector('.qty-num');
+          var priceVal = card.querySelector('.price-val');
+          var basePrice = parseFloat(card.getAttribute('data-price'));
+
+          function updatePrice(qty) {
+            var total = basePrice * qty;
+            priceVal.textContent = total.toLocaleString('de-DE');
+          }
+
+          if (minusBtn) {
+            minusBtn.addEventListener('click', function() {
+              var qty = parseInt(qtyNum.textContent, 10);
+              if (qty > 1) {
+                qty--;
+                qtyNum.textContent = qty;
+                updatePrice(qty);
+              }
+            });
+          }
+          if (plusBtn) {
+            plusBtn.addEventListener('click', function() {
+              var qty = parseInt(qtyNum.textContent, 10);
+              qty++;
+              qtyNum.textContent = qty;
+              updatePrice(qty);
+            });
+          }
+        });
+
+        // === Favorites (heart) toggle ===
+        cards.forEach(function(card) {
+          var favBtn = card.querySelector('.fav-btn');
+          if (favBtn) {
+            favBtn.addEventListener('click', function() {
+              this.classList.toggle('liked');
+              if (this.classList.contains('liked')) {
+                this.textContent = '♥';
+              } else {
+                this.textContent = '♡';
+              }
+            });
+          }
+        });
+      })();
+    })();
+  </script>
+</body>
+</html>

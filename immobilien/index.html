@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RelayEstate – Automatisierung für Immobilienteams</title>
+    <meta
+      name="description"
+      content="RelayEstate erfasst, qualifiziert, verteilt und beantwortet Immobilien-Anfragen, bevor der Mitbewerb die Gelegenheit überhaupt sieht."
+    />
+    <script src="./assets/vendor/gtag.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-2M6V79H761');
+    </script>
+    <script src="./assets/vendor/tailwindcdn.js"></script>
+    <link rel="stylesheet" href="./assets/fonts/google-fonts.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <div class="nav-shell">
+        <div class="nav-left" aria-label="Abschnittslinks">
+          <a href="#engine">Lösungen</a>
+          <a href="#workflow">Abläufe</a>
+          <a href="#process">Prozess</a>
+          <a href="#proof">Ergebnisse</a>
+        </div>
+        <a class="brand" href="#top" aria-label="RelayEstate Startseite">
+          <span class="brand-mark"><i data-lucide="git-branch"></i></span>
+          RelayEstate
+        </a>
+        <div class="nav-actions">
+          <a class="nav-faq" href="#faq">FAQ</a>
+          <a href="#audit" class="nav-cta">Lücken im Anfragefluss finden <i data-lucide="arrow-right"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero grain-overlay">
+        <video
+          class="hero-bg"
+          data-hero-parallax
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+          poster="./assets/images/hero.jpg"
+          aria-hidden="true"
+        >
+          <source src="./assets/images/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-vignette"></div>
+        <div class="hero-shell">
+          <div class="hero-meta hero-meta-left reveal-item" style="--delay: 100ms">
+            <strong>// KI-Antwortsysteme für Immobilienteams</strong>
+            <span>Anfrage – Verteilung – Terminierung – CRM-Nachfassen</span>
+          </div>
+          <div class="hero-meta hero-meta-right reveal-item" style="--delay: 150ms">
+            <strong>Betriebssystem-Ebene</strong>
+            <span>Antwortziel: unter 60 Sekunden</span>
+          </div>
+          <div class="hero-bottom">
+            <h1 class="hero-title reveal-item" style="--delay: 200ms">
+              Aus jeder Anfrage<br />
+              wird schneller der nächste<br />
+              Schritt.
+            </h1>
+            <div class="hero-action-panel reveal-item" style="--delay: 300ms">
+              <p class="hero-copy">
+                Automatisieren Sie Antwort, Qualifizierung, Verteilung, Terminierung und
+                CRM-Aktualisierung, damit Ihr Team jede Anfrage weiterbringt, bevor der
+                Schwung verloren geht.
+              </p>
+              <a class="btn-primary" href="#audit">Meinen Anfragefluss abbilden</a>
+              <div class="hero-chips" aria-label="Automatisierungs-Funktionen">
+                <span><i data-lucide="message-square"></i> Sofortantwort</span>
+                <span><i data-lucide="calendar-check"></i> Termin gebucht</span>
+                <span><i data-lucide="database"></i> CRM-Abgleich</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-aura" aria-hidden="true"><span>A</span> Made in Aura</div>
+        </div>
+      </section>
+
+      <section id="diagnostic" class="diagnostic section-slant-bottom grain-overlay light-section">
+        <div class="section-shell">
+          <div class="section-kicker dark"><span></span> Verluste in der Pipeline</div>
+          <div class="section-head dark">
+            <h2>Wo Immobilienteams nach dem Eingang der Anfrage an Schwung verlieren.</h2>
+            <p>
+              Die meisten Teams bekommen bereits Anfragen über Website, Portale,
+              Empfehlungen und Telefon. Das eigentliche Problem ist, was in den
+              Minuten und Stunden nach dieser ersten Anfrage passiert.
+            </p>
+          </div>
+
+          <div class="diagnostic-track" data-diagnostic-track>
+            <div class="diagnostic-rail">
+              <span class="diagnostic-rail-progress" data-diagnostic-progress></span>
+            </div>
+            <span class="diagnostic-node diagnostic-node-1"><b></b></span>
+            <span class="diagnostic-node diagnostic-node-2"><b></b></span>
+            <span class="diagnostic-node diagnostic-node-3"><b></b></span>
+            <span class="diagnostic-node diagnostic-node-4"><b></b></span>
+
+            <article class="timeline-text timeline-text-left timeline-row-1 reveal-on-scroll">
+              <span class="timeline-label">Anfrageeingang</span>
+              <h3>Die Anfrage kommt an, aber das Zeitfenster für die Antwort ist kurz.</h3>
+              <p>
+                Ein Website-Formular, eine Portal-Anfrage, ein verpasster Anruf oder eine
+                Empfehlung erzeugt Interesse. Ist die erste Antwort langsam, verliert sich
+                der Schwung sofort.
+              </p>
+            </article>
+
+            <article class="timeline-card timeline-card-right timeline-row-1 reveal-on-scroll">
+              <i data-lucide="inbox"></i>
+              <h4>Anfragequellen häufen sich schnell</h4>
+              <ul>
+                <li>Website-Formulare kommen ohne sofortige Bestätigung an</li>
+                <li>Portal-Anfragen konkurrieren mit anderen laufenden Aufgaben</li>
+                <li>Verpasste Anrufe bekommen selten eine strukturierte Rückmeldung per SMS</li>
+              </ul>
+            </article>
+
+            <article class="timeline-card timeline-card-left timeline-row-2 reveal-on-scroll">
+              <i data-lucide="timer-reset"></i>
+              <h4>Antwortdisziplin bricht unter Last ein</h4>
+              <ul>
+                <li>Anfragen außerhalb der Bürozeiten warten zu lange</li>
+                <li>Dichte Besichtigungstage schwächen die Antwortkonstanz</li>
+                <li>Kein gemeinsamer Standard für die Erstkontakt-Zeit</li>
+              </ul>
+            </article>
+
+            <article class="timeline-text timeline-text-right timeline-row-2 reveal-on-scroll">
+              <span class="timeline-label">Verzögerte Antwort</span>
+              <h3>Das Nachfassen wird ungleichmäßig, wenn das Timing vom Gedächtnis abhängt.</h3>
+              <p>
+                Sind die ersten Minuten vorbei, hängt die Qualität des Nachfassens oft davon
+                ab, wer verfügbar ist, wer daran gedacht hat und was an diesem Tag sonst
+                noch los ist.
+              </p>
+            </article>
+
+            <article class="timeline-text timeline-text-left timeline-row-3 reveal-on-scroll">
+              <span class="timeline-label">Lücken in der Qualifizierung</span>
+              <h3>Nach dem Erstkontakt fehlt oft der entscheidende Kontext.</h3>
+              <p>
+                Zeitplan, Absicht, Dringlichkeit, Preisrahmen und Lage werden nicht immer
+                klar erfasst, was sowohl die Verteilung als auch die Qualität des
+                Nachfassens schwächt.
+              </p>
+            </article>
+
+            <article class="timeline-card timeline-card-right timeline-row-3 reveal-on-scroll">
+              <i data-lucide="messages-square"></i>
+              <h4>Gespräche beginnen ohne Struktur</h4>
+              <ul>
+                <li>Kauf- oder Verkaufsabsicht bleibt unklar</li>
+                <li>Dringlichkeit und Umzugszeitpunkt gehen unter</li>
+                <li>Dem Nachfassen fehlt brauchbarer Kontext für den nächsten Schritt</li>
+              </ul>
+            </article>
+
+            <article class="timeline-card timeline-card-left timeline-row-4 reveal-on-scroll">
+              <i data-lucide="route"></i>
+              <h4>Zwischen den Systemen geht der Schwung verloren</h4>
+              <ul>
+                <li>Qualifizierte Anfragen werden manuell verteilt</li>
+                <li>Buchungslinks und Erinnerungen kommen zu spät</li>
+                <li>CRM-Notizen, Tags und Statusänderungen bleiben unvollständig</li>
+              </ul>
+            </article>
+
+            <article class="timeline-text timeline-text-right timeline-row-4 reveal-on-scroll">
+              <span class="timeline-label">Manuelle Übergabe</span>
+              <h3>Verteilung, Terminierung und CRM-Aktualisierung passieren zu spät.</h3>
+              <p>
+                Sobald die Anfrage übergeben werden muss, entstehen Reibungen zwischen
+                Postfächern, Kalendern und Maklerinnen. Gute Anfragen bleiben im Übergang
+                liegen.
+              </p>
+            </article>
+
+            <div class="timeline-footer">Anfrage -> Verzögerung -> Fehlender Kontext -> Manuelle Übergabe -> Kalte Anfrage</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="engine" class="engine section-slant-both grain-overlay">
+        <div class="section-shell">
+          <div class="section-kicker"><span></span> Lösungsarchitektur</div>
+          <div class="section-head">
+            <h2>Vier Systeme, die jede Anfrage in Bewegung halten.</h2>
+            <p>
+              RelayEstate verbindet Antwort, Qualifizierung, Verteilung und CRM-Kontinuität
+              zu einem strukturierten Ablauf, damit Ihr Team schneller arbeitet, ohne den
+              Kontext zu verlieren.
+            </p>
+          </div>
+
+          <div class="automate-engine-shell reveal-on-scroll">
+            <div class="window-bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="orchestration-window">
+              <div class="orchestration-top">
+                <h3>Orchestrierungsebene für Anfragen</h3>
+                <div class="orchestration-status">
+                  <span><i data-lucide="message-square"></i> Sofortantwort</span>
+                  <span><i data-lucide="check-circle"></i> Qualifiziert + getaggt</span>
+                  <span><i data-lucide="clock"></i> Antwortziel: unter 60 s</span>
+                </div>
+              </div>
+              <div class="flow-grid">
+                <div class="flow-card">
+                  <span>Anfrageeingang</span>
+                  <div class="flow-mini-card">
+                    <small>Neue Anfrage <b>08:42</b></small>
+                    <h4>Käufer-Anfrage über die Website erfasst</h4>
+                    <p>Wien Innere Stadt – 3 Zimmer – bezugsfertig in 60 Tagen</p>
+                  </div>
+                </div>
+                <div class="flow-card">
+                  <span>Antwortebene</span>
+                  <div class="flow-mini-card">
+                    <small>Sofortige Nachricht <b>08:43</b></small>
+                    <h4>Erstantwort automatisch gesendet</h4>
+                    <p>Nennt den nächsten Schritt und startet die Qualifizierung</p>
+                  </div>
+                </div>
+                <div class="flow-card">
+                  <span>Qualifizierung</span>
+                  <div class="flow-mini-card">
+                    <small>Absicht getaggt <b>08:45</b></small>
+                    <h4>Zeitplan, Dringlichkeit und Passung erfasst</h4>
+                    <p>Kaufabsicht mit Budget und passender Lage bestätigt</p>
+                  </div>
+                </div>
+                <div class="flow-card">
+                  <span>Verteilung + Kontinuität</span>
+                  <div class="flow-mini-card">
+                    <small>Nächster Schritt gebucht <b>08:47</b></small>
+                    <h4>Anfrage verteilt, Termin gebucht, CRM abgeglichen</h4>
+                    <p>Der richtigen Person zugewiesen, mit Zusammenfassung, Tags und Aufgabe</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="engine-benefits">
+              <article>
+                <i data-lucide="message-square"></i>
+                <h3>Sofort antworten</h3>
+                <p>Website-Formulare, Portal-Anfragen und verpasste Anrufe beantworten, ohne auf manuelle Erstkontakt-Abdeckung zu warten.</p>
+              </article>
+              <article>
+                <i data-lucide="messages-square"></i>
+                <h3>Strukturiert qualifizieren</h3>
+                <p>Absicht, Dringlichkeit, Budget und Lage erfassen, damit das Nachfassen mit brauchbarem Kontext beginnt statt mit Vermutungen.</p>
+              </article>
+              <article>
+                <i data-lucide="database"></i>
+                <h3>Kontinuität wahren</h3>
+                <p>Die Anfrage verteilen, die nächste Aktion auslösen und Notizen, Tags, Erinnerungen und Statusänderungen ins CRM schreiben.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="engine-bottom-fade"></div>
+      </section>
+
+      <section id="proof" class="impact light-section grain-overlay">
+        <div class="section-shell impact-grid">
+          <div class="impact-copy">
+            <div class="section-kicker dark"><span></span> Operative Wirkung</div>
+            <h2>Was sich ändert, wenn die Antwort strukturiert ist.</h2>
+            <p class="impact-intro">
+              RelayEstate beschleunigt nicht nur das Nachfassen. Es verbessert, wie Ihr Team
+              nach jeder Anfrage antwortet, qualifiziert, verteilt und Kontinuität hält.
+            </p>
+            <div class="impact-table" aria-label="Bereiche der operativen Wirkung">
+              <div class="impact-table-head">
+                <span>Operativer Bereich</span>
+                <span>Wirkung</span>
+              </div>
+              <article>
+                <div>
+                  <h3>Erstkontakt-Abdeckung</h3>
+                  <p>Antworten auf Website, Portal und verpasste Anrufe bleiben auch außerhalb der Verfügbarkeit aktiv.</p>
+                </div>
+                <strong>Schnellere Antwort</strong>
+              </article>
+              <article>
+                <div>
+                  <h3>Konstante Qualifizierung</h3>
+                  <p>Jedes Gespräch startet mit klareren Signalen zu Absicht, Dringlichkeit, Zeitplan und Passung.</p>
+                </div>
+                <strong>Sauberer Kontext</strong>
+              </article>
+              <article>
+                <div>
+                  <h3>Verlässliche Übergabe</h3>
+                  <p>Verteilung, Erinnerungen und Terminübergänge passieren mit weniger manuellem Nachlaufen.</p>
+                </div>
+                <strong>Weniger verlorene Schritte</strong>
+              </article>
+              <article>
+                <div>
+                  <h3>CRM-Kontinuität</h3>
+                  <p>Zusammenfassungen, Tags, nächste Aktionen und Status bleiben teamweit aktueller.</p>
+                </div>
+                <strong>Bessere Pipeline-Hygiene</strong>
+              </article>
+            </div>
+          </div>
+          <aside class="impact-card reveal-on-scroll">
+            <figure>
+              <img src="./assets/images/impact.jpg" alt="Ausschnitt des Ablaufs vor einer modernen Immobilie" />
+              <figcaption>
+                <span>Ausgewählter Ablauf-Ausschnitt</span>
+                <strong>Anfragefluss zurückgewonnen</strong>
+              </figcaption>
+            </figure>
+            <div class="impact-card-body">
+              <h3>Von der Anfrage zum gebuchten nächsten Schritt, mit weniger Reibung.</h3>
+              <p>
+                Ein strukturierter Ablauf hilft dem Team, schneller zu antworten, brauchbaren
+                Kontext früher zu erfassen und qualifizierte Anfragen in die richtige nächste
+                Aktion zu bringen, ohne zwischen den Werkzeugen Schwung zu verlieren.
+              </p>
+              <div class="snapshot-metrics">
+                <div>
+                  <i data-lucide="clock"></i>
+                  <span><b>Antwortziel</b><small>Erstkontakt-Tempo</small></span>
+                  <strong>&lt; 60s</strong>
+                </div>
+                <div>
+                  <i data-lucide="calendar-check"></i>
+                  <span><b>Nächster Schritt gebucht</b><small>Termin-Kontinuität</small></span>
+                  <strong>1 Ablauf</strong>
+                </div>
+                <div>
+                  <i data-lucide="database"></i>
+                  <span><b>CRM aktualisiert</b><small>Notizen, Tags und Verteilung</small></span>
+                  <strong>Abgeglichen</strong>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="workflow" class="workflow section-slant-top grain-overlay">
+        <div class="section-shell">
+          <div class="workflow-panel">
+            <div class="workflow-copy">
+              <div class="workflow-eyebrow">Ablauf-Szenarien</div>
+              <h2>Gebaut für die Momente, die Tempo und Konsequenz brauchen.</h2>
+              <div class="workflow-points">
+                <div class="workflow-point">
+                  <span class="workflow-point-dot"></span>
+                  <div><h3>Neue Anfrage erfassen</h3><p>Website- und Portal-Anfragen sofort beantworten, bevor der Schwung nachlässt.</p></div>
+                </div>
+                <div class="workflow-point">
+                  <span class="workflow-point-dot"></span>
+                  <div><h3>Verpasste Anrufe zurückholen</h3><p>Verpasste Anrufe in strukturiertes Nachfassen per SMS verwandeln statt in Sackgassen.</p></div>
+                </div>
+                <div class="workflow-point">
+                  <span class="workflow-point-dot"></span>
+                  <div><h3>Abdeckung außerhalb der Bürozeiten</h3><p>Abende und Wochenenden aktiv halten — mit geführten nächsten Schritten und Qualifizierung.</p></div>
+                </div>
+              </div>
+              <div class="workflow-cta-block">
+                <h3>Jede Anfrage näher an die nächste Aktion bringen.</h3>
+                <p>
+                  RelayEstate hilft Teams, Antwort, Verteilung, Erinnerungen und Übergabe genau
+                  in jenen Momenten am Laufen zu halten, in denen manuelles Nachfassen
+                  üblicherweise abreißt.
+                </p>
+                <a class="btn-primary" href="#audit">Ablauf-Beispiele ansehen <span></span></a>
+              </div>
+            </div>
+            <div class="workflow-media">
+              <figure class="workflow-card workflow-card-wide">
+                <img src="./assets/images/workflow-wide.jpg" alt="Ausschnitt eines Immobilien-Anfrageablaufs" />
+                <figcaption>Erste Antwort in Bewegung</figcaption>
+              </figure>
+              <figure class="workflow-card">
+                <img src="./assets/images/workflow-tall-1.jpg" alt="Ablauf für verpasste Anrufe" />
+                <figcaption>Verpasste Anrufe zurückholen</figcaption>
+              </figure>
+              <figure class="workflow-card">
+                <img src="./assets/images/workflow-tall-2.jpg" alt="Ablauf für Anfragen außerhalb der Bürozeiten" />
+                <figcaption>Abdeckung, die aktiv bleibt</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="implementation light-section grain-overlay">
+        <div class="section-shell">
+          <div class="section-kicker dark"><span></span> Einführung + Nachweis</div>
+          <div class="implementation-head">
+            <h2>Wie RelayEstate eingeführt wird, ohne Ihr Team zu stören.</h2>
+            <p>
+              Wir bilden zuerst Ihren bestehenden Anfragefluss ab und setzen die Logik für
+              Antwort, Qualifizierung und Verteilung dort ein, wo sie operativ am meisten
+              bewirkt.
+            </p>
+          </div>
+          <div class="process-grid">
+            <article class="story-card process-story-card">
+              <img src="./assets/images/process.jpg" alt="Betriebsraum eines Immobilienteams" />
+              <div class="process-story-top">
+                <strong>Unser Prozess</strong>
+                <span>Abgebildet & operationalisiert</span>
+              </div>
+              <div class="process-story-bottom">
+                <h3>Anfragefluss mit <span>Kontinuität</span></h3>
+                <span class="dot-row"><b></b><b></b><b></b></span>
+                <p>Audit -> Einführung -> Feinschliff <i data-lucide="arrow-up-right"></i></p>
+              </div>
+            </article>
+            <article class="step-list-card implementation-card">
+              <strong>Klarheit bei der Einführung:</strong>
+              <h3><span>4 Schritte</span> Rollout, schnellere Aktivierung</h3>
+              <h4>So wird RelayEstate eingerichtet:</h4>
+              <ul>
+                <li>Bestehende Anfragequellen und Übergaben prüfen</li>
+                <li>Regeln für Antwort, Qualifizierung und Verteilung abbilden</li>
+                <li>Erste Automatisierungsebene rasch starten</li>
+                <li>Aus echtem Anfrageverhalten und Team-Feedback nachschärfen</li>
+              </ul>
+              <aside class="testimonial-card">
+                <div class="stars">★ ★ ★ ★ ★</div>
+                <p>
+                  „RelayEstate hat uns geholfen, die Antwortzeit zu straffen, Übergaben
+                  aufzuräumen und endlich jeder Anfrage einen verlässlichen nächsten
+                  Schritt zu geben.“
+                </p>
+                <div class="testimonial-person">
+                  <img src="./assets/images/avatar.webp" alt="Avatar von Jakob Wieser" />
+                  <span><b>Jakob Wieser</b><small>Teamleitung, Growth Realty Group</small></span>
+                </div>
+              </aside>
+            </article>
+            <article class="implementation-side">
+              <div class="confidence-card">
+                <div class="confidence-ring"><i data-lucide="shield-check"></i></div>
+                <h3>Vertrauen in den Ablauf</h3>
+                <p>
+                  Gebaut, um Antwortabdeckung, Klarheit bei der Übergabe und Kontinuität zu
+                  verbessern — ohne die Arbeitsweise Ihres Teams zu stören.
+                </p>
+              </div>
+              <div class="rollout-card">
+                <div class="rollout-stats">
+                  <div><strong>4 Schritte</strong><span>Von Audit bis Rollout</span></div>
+                  <div><strong>48h</strong><span>Erste Systemkarte</span></div>
+                </div>
+                <div class="rollout-list">
+                  <p><span>Anfrageeingang</span><b>Abgebildet</b></p>
+                  <p><span>Verteilungslogik</span><b>Konfiguriert</b></p>
+                  <p><span>CRM-Kontinuität</span><b>Strukturiert</b></p>
+                </div>
+                <footer><i data-lucide="check"></i> Auf Ihren echten Anfragefluss gebaut</footer>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="faq-section grain-overlay">
+        <div class="section-shell">
+          <div class="faq-head">
+            <div class="section-kicker"><span></span> FAQ</div>
+            <h2>Was Teams meist fragen, bevor sie den Ablauf straffen.</h2>
+            <p>
+              RelayEstate fügt sich in die Antwort-, Verteilungs- und Nachfass-Systeme ein,
+              die Sie bereits nutzen, und schließt die Lücken, an denen der Schwung einer
+              Anfrage verloren geht.
+            </p>
+          </div>
+          <div class="faq-layout">
+            <aside class="faq-context-card">
+              <div class="section-kicker"><span></span> Häufige Einwände</div>
+              <h3>Gebaut, um Reibung zu senken — nicht um eine weitere Schicht hinzuzufügen.</h3>
+              <p>
+                Den meisten Teams fehlen nicht die Werkzeuge. Sie verlieren Schwung, weil
+                Antwort, Qualifizierung, Verteilung und Übergabe unter realen Bedingungen
+                nicht verbunden bleiben.
+              </p>
+              <ul>
+                <li><i data-lucide="git-branch"></i> Ausgelegt auf Zusammenspiel mit Ihrem CRM, Ihren Kalendern und Anfragequellen.</li>
+                <li><i data-lucide="timer-reset"></i> Gebaut für kurze Antwortfenster, Kontinuität außerhalb der Bürozeiten und saubere Übergaben.</li>
+                <li><i data-lucide="route"></i> Strukturiert, um qualifizierte Anfragen in den richtigen nächsten Schritt zu bringen, ohne Kontext zu verlieren.</li>
+              </ul>
+            </aside>
+            <div class="faq" aria-label="Häufig gestellte Fragen">
+              <article class="faq-item">
+                <button type="button">
+                  Ersetzt RelayEstate unser CRM?
+                  <i data-lucide="plus"></i>
+                </button>
+                <div class="faq-answer"><p>Nein. RelayEstate stärkt die Antwort- und Verteilungsebene rund um Ihr bestehendes System. Es erfasst Kontext früher, löst den richtigen nächsten Schritt schneller aus und hält die Kontinuität vor und während der CRM-Übergabe sauberer.</p></div>
+              </article>
+              <article class="faq-item">
+                <button type="button">
+                  Kann es Anfragen außerhalb der Bürozeiten und am Wochenende bearbeiten?
+                  <i data-lucide="plus"></i>
+                </button>
+                <div class="faq-answer"><p>Ja. Eine der größten Lücken ist die Verzögerung, wenn eine Anfrage außerhalb der üblichen Zeiten eintrifft. RelayEstate hält die Erstantwort aktiv und führt die Anfrage in einen strukturierten Nachfass-Pfad, ohne auf manuelle Verfügbarkeit zu warten.</p></div>
+              </article>
+              <article class="faq-item">
+                <button type="button">
+                  Wie individuell können Verteilung und Qualifizierung sein?
+                  <i data-lucide="plus"></i>
+                </button>
+                <div class="faq-answer"><p>Die Qualifizierungslogik lässt sich an jene Faktoren anpassen, die Ihr Team tatsächlich nutzt: Absicht, Zeitplan, Dringlichkeit, Markt, Preisrahmen und Teamstruktur. Das Ziel ist keine generische Automatisierung, sondern eine saubere operative Passung.</p></div>
+              </article>
+              <article class="faq-item">
+                <button type="button">
+                  Welche Anfragequellen passen in den Ablauf?
+                  <i data-lucide="plus"></i>
+                </button>
+                <div class="faq-answer"><p>Website-Formulare, Portal-Anfragen, verpasste Anrufe, Empfehlungen und andere Eingänge lassen sich in dieselbe Kontinuitätsebene bringen, damit Ihr Team nicht auf zersplitterte Antwortgewohnheiten je Kanal angewiesen ist.</p></div>
+              </article>
+              <article class="faq-item">
+                <button type="button">
+                  Wie lange dauert die Einrichtung üblicherweise?
+                  <i data-lucide="plus"></i>
+                </button>
+                <div class="faq-answer"><p>Das hängt davon ab, wie viele Quellen, Verteilungsbedingungen und Übergaberegeln abzubilden sind. Meist ist der erste Schritt nicht die volle Einführung, sondern das Aufspüren der Stellen, an denen der Schwung tatsächlich verloren geht.</p></div>
+              </article>
+              <article class="faq-item">
+                <button type="button">
+                  Wirkt das für eine vertrauensbasierte Kundenbeziehung nicht zu automatisiert?
+                  <i data-lucide="plus"></i>
+                </button>
+                <div class="faq-answer"><p>Es sollte sich reaktionsfreudiger anfühlen, nicht roboterhafter. Es geht darum, dass keine Anfrage im Schweigen wartet, kein Kontext früh verloren geht und keine qualifizierte Anfrage stockt, bevor der nächste menschliche Schritt bereit ist.</p></div>
+              </article>
+            </div>
+          </div>
+          <div class="faq-footer">Klare Verteilung – schnellere Antwort – saubere Übergabe</div>
+        </div>
+      </section>
+
+      <section id="audit" class="audit grain-overlay">
+        <div class="audit-bg" data-audit-parallax></div>
+        <div class="audit-shell">
+          <div class="audit-copy reveal-on-scroll">
+            <div class="section-kicker"><span></span> Letzter Schritt</div>
+            <h2>Sehen Sie, wo Ihr Anfragefluss leise abreißt.</h2>
+            <p>
+              RelayEstate zeigt Ihnen genau die Stellen, an denen Antwortzeit, Qualifizierung,
+              Verteilung und Übergabe Schwung verlieren — und baut den Weg zu einem
+              schnelleren, verbundenen nächsten Schritt neu auf.
+            </p>
+            <div class="audit-actions">
+              <a class="btn-primary" href="mailto:hello@relayestate.example">Lücken im Anfragefluss finden</a>
+              <a class="btn-secondary" href="#process">System prüfen lassen <i data-lucide="arrow-up-right"></i></a>
+            </div>
+          </div>
+          <aside class="audit-card">
+            <div class="audit-card-head">
+              <strong>Worauf das Audit schaut</strong>
+              <span>Umfang des Audits</span>
+            </div>
+            <div class="audit-card-body">
+              <article>
+                <i data-lucide="clock-3"></i>
+                <div>
+                  <h3>Antwortverzögerung</h3>
+                  <p>Wo die Erstkontakt-Zeit bricht und das Interesse abkühlt.</p>
+                </div>
+              </article>
+              <article>
+                <i data-lucide="message-square"></i>
+                <div>
+                  <h3>Fehlender Kontext</h3>
+                  <p>Wo Qualifizierungsdetails zu spät erfasst werden, um sauber zu verteilen.</p>
+                </div>
+              </article>
+              <article>
+                <i data-lucide="route"></i>
+                <div>
+                  <h3>Gebrochene Übergabe</h3>
+                  <p>Wo Verteilung, Terminierung oder CRM-Kontinuität den nächsten Schritt schwächen.</p>
+                </div>
+              </article>
+            </div>
+            <div class="audit-card-stats">
+              <div>
+                <strong>&lt; 60s</strong>
+                <span>ZIEL-ANTWORTZEIT</span>
+              </div>
+              <div>
+                <strong>1 Ablauf</strong>
+                <span>VERBUNDENER PFAD</span>
+              </div>
+              <div>
+                <strong>0 Lücken</strong>
+                <span>ÜBERGABE-ZIEL</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="site-footer light-section grain-overlay">
+        <div class="section-shell site-footer-shell">
+          <div class="site-footer-brand">
+            <a class="brand footer-brand" href="#top" aria-label="RelayEstate Startseite">
+              <span class="brand-mark"><i data-lucide="git-branch"></i></span>
+              RelayEstate
+            </a>
+            <p>
+              Automatisierung für Immobilien-Anfragen: Antwort, Qualifizierung, Verteilung,
+              Terminierung und CRM-Kontinuität straffen, ohne zwischen der ersten Anfrage
+              und dem nächsten Schritt Schwung zu verlieren.
+            </p>
+          </div>
+          <div class="site-footer-links" aria-label="Fußzeilen-Navigation">
+            <strong>Navigation</strong>
+            <a href="#engine">Lösungen</a>
+            <a href="#workflow">Abläufe</a>
+            <a href="#process">Prozess</a>
+            <a href="#proof">Ergebnisse</a>
+          </div>
+          <div class="site-footer-links" aria-label="Weitere Links">
+            <strong>Entdecken</strong>
+            <a href="#faq">FAQ</a>
+            <a href="#audit">Anfrage-Audit</a>
+            <a href="#top">Nach oben</a>
+          </div>
+          <div class="site-footer-links" aria-label="Kontakt-Links">
+            <strong>Kontakt</strong>
+            <a href="#audit">Lücken im Anfragefluss finden</a>
+            <a href="mailto:hello@relayestate.at">hello@relayestate.at</a>
+            <a href="tel:+10000000000">+1 (000) 000-0000</a>
+          </div>
+        </div>
+        <div class="section-shell site-footer-bottom">
+          <div class="site-footer-meta">
+            <span>&copy; 2026 RelayEstate. Alle Rechte vorbehalten.</span>
+          </div>
+          <div class="site-footer-policies">
+            <a href="#top">Datenschutz</a>
+            <a href="#top">AGB</a>
+            <a href="#top">Cookies</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="./assets/vendor/lucide.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

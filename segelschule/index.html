@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexus Maritime — ICC-Segelschule &amp; Premium-Charter | Neusiedler See · Adria</title>
+<meta name="description" content="ICC-Vorbereitung ohne Kompromisse und Premium-Segelcharter — vom silbernen Spiegel des Neusiedler Sees bis ins tiefe Wasser der Adria. Basis: Neusiedl am See.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#030a12;
+  --deep:#07131f;
+  --panel:#0a1826;
+  --line:rgba(140,180,210,.14);
+  --silver:#c8d4dd;
+  --body:#93a7b6;
+  --cyan:#6fd3ff;
+  --cyan-dim:rgba(111,211,255,.35);
+  --mono:ui-monospace,"Cascadia Mono","JetBrains Mono",Consolas,monospace;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --ease-inout:cubic-bezier(.65,0,.35,1);
+  --page-pad:clamp(20px,5vw,72px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{
+  background:var(--void);
+  color:var(--body);
+  font-family:Inter,system-ui,sans-serif;
+  font-size:16px;line-height:1.65;
+  overflow-x:clip;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--cyan-dim);color:#eaf6ff}
+h1,h2,h3{font-family:Oswald,sans-serif;color:var(--silver);font-weight:600;line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
+a{color:inherit}
+img,svg,canvas,video{display:block;max-width:100%}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan)}
+
+/* ---------- grain over everything ---------- */
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:20px var(--page-pad);
+  opacity:0;transform:translateY(-8px);
+  transition:opacity .8s var(--ease-out) 1.2s,transform .8s var(--ease-out) 1.2s}
+body.loaded .nav{opacity:1;transform:none}
+.nav-logo{font-family:Oswald,sans-serif;font-weight:600;font-size:.95rem;letter-spacing:.3em;color:var(--silver);text-decoration:none}
+.nav-logo em{font-style:normal;color:var(--cyan)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--body);text-decoration:none;
+  background-image:linear-gradient(currentColor,currentColor);background-repeat:no-repeat;background-size:0% 1px;background-position:left bottom;
+  transition:background-size .3s var(--ease-out),color .3s}
+.nav-links a:hover,.nav-links a:focus-visible{background-size:100% 1px;color:var(--cyan)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;overflow:clip;display:flex;align-items:flex-end}
+.hero-img,.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-video{opacity:0;transition:opacity 1.4s var(--ease-out)}
+body.loaded .hero-video{opacity:1}
+body.loaded .hero-video.off{opacity:0;transition-duration:.6s}
+.hero-scrim{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(3,10,18,.55) 0%,transparent 30%,transparent 55%,var(--void) 96%)}
+.hero-content{position:relative;z-index:2;width:100%;padding:0 var(--page-pad) 9svh}
+.hero-kicker{margin-bottom:18px}
+.hero-titles{display:grid}
+.hero-titles>*{grid-area:1/1}
+.t-slogan{visibility:hidden}
+@media(max-width:768px){.t-slogan{display:none}}
+.hero-title{font-size:clamp(2.6rem,9.5vw,8.2rem);letter-spacing:.005em;font-family:Oswald,sans-serif;color:var(--silver);font-weight:600;line-height:1.05;text-transform:uppercase}
+.hero-title .line{display:block;overflow:clip;padding-bottom:.06em}
+.hero-title .word{display:inline-block;
+  background:linear-gradient(180deg,#f0f6fa 0%,#a9bdcb 42%,#5f7688 58%,#d3e0ea 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 18px rgba(0,0,0,.5))}
+.hero-lede{max-width:44ch;margin-top:22px;color:var(--body)}
+.hero-cta-row{display:flex;align-items:center;gap:28px;margin-top:30px;flex-wrap:wrap}
+.cta{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;
+  color:#04121e;background:var(--cyan);padding:15px 30px;border:0;cursor:pointer;
+  transition:transform .25s var(--ease-out),box-shadow .25s}
+.cta:hover{box-shadow:0 0 32px var(--cyan-dim)}
+.cta:active{transform:scale(.97)}
+.cta-ghost{color:var(--silver);background:none;border:1px solid var(--line);transition:border-color .3s,color .3s}
+.cta-ghost:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:none}
+.hero-hint{position:absolute;right:var(--page-pad);bottom:9svh;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--body)}
+.hero-hint span{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;writing-mode:vertical-rl}
+.hero-hint::after{content:'';width:1px;height:56px;background:linear-gradient(var(--cyan),transparent);
+  animation:sound 2.4s var(--ease-inout) infinite}
+@keyframes sound{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.45);opacity:.4}}
+@media(max-width:640px){.hero-hint{display:none}}
+
+/* ---------- ticker ---------- */
+.ticker{border-block:1px solid var(--line);overflow:clip;padding:16px 0;background:var(--void)}
+.ticker-track{display:flex;width:max-content;animation:tick 46s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker span{font-family:var(--mono);font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--body);white-space:nowrap;padding-right:64px}
+.ticker b{color:var(--cyan);font-weight:400}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- generic section shell ---------- */
+.section{position:relative;padding:clamp(90px,14vh,170px) var(--page-pad);background:var(--void)}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(1.9rem,4.6vw,3.6rem)}
+.sec-lede{max-width:52ch;margin-bottom:48px}
+[data-reveal]{opacity:0;transform:translateY(22px);
+  transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);
+  transition-delay:calc(var(--i,0)*120ms)}
+[data-reveal].in{opacity:1;transform:none}
+
+/* ---------- media figure (glare + parallax clip) ---------- */
+.media{position:relative;overflow:clip;border:1px solid var(--line);background:var(--deep)}
+.media img{width:100%;height:100%;object-fit:cover;scale:1.15}
+.media::after{content:'';position:absolute;inset:-40%;pointer-events:none;
+  background:linear-gradient(105deg,transparent 42%,rgba(230,245,255,.13) 50%,transparent 58%);
+  transform:translateX(-70%);transition:transform .8s var(--ease-inout)}
+.media:hover::after{transform:translateX(70%)}
+.media figcaption,.media .tag{position:absolute;left:16px;bottom:14px;z-index:2;
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);
+  text-shadow:0 1px 8px rgba(3,10,18,.9)}
+
+/* ---------- split layout (bemutatkozás + akadémia) ---------- */
+.split{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,88px);align-items:start}
+.split-copy{position:sticky;top:110px}
+.m-tall{aspect-ratio:3/4}
+.m-off{aspect-ratio:4/5;width:68%;margin:-22% 0 0 auto;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.split.rev{grid-template-columns:7fr 5fr}
+.split.rev .split-copy{order:2}
+.split-copy p+p{margin-top:1em}
+.sign{display:block;margin-top:28px;font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--silver)}
+@media(max-width:900px){
+  .split,.split.rev{grid-template-columns:1fr}
+  .split-copy{position:static;order:0}
+  .m-off{margin-top:-14%}
+}
+
+/* ---------- stats (bemutatkozás) ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,3vw,48px);border-block:1px solid var(--line);margin-top:48px}
+@media(max-width:700px){.stats{grid-template-columns:1fr}}
+.stat{padding:28px 0}
+.stat b{display:block;font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(2rem,3.6vw,3rem);color:var(--silver);line-height:1}
+.stat b i{font-style:normal;font-size:.42em;color:var(--cyan);letter-spacing:.1em;margin-left:6px}
+.stat span{display:block;margin-top:8px;font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase}
+
+/* ---------- flotta: horizontal showcase ---------- */
+.fleet{position:relative;background:var(--void);border-top:1px solid var(--line);overflow:clip}
+.fleet-track{display:flex;height:100svh;width:max-content}
+.f-intro{width:min(46vw,680px);display:flex;flex-direction:column;justify-content:center;gap:0;padding:0 var(--page-pad);flex-shrink:0}
+.f-hint{margin-top:40px}
+.f-panel{position:relative;width:min(74vw,1150px);height:100svh;overflow:clip;border-left:1px solid var(--line);flex-shrink:0}
+.f-panel>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.f-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,10,18,.3) 0%,transparent 35%,rgba(3,10,18,.86) 88%)}
+.f-num{position:absolute;top:8svh;right:32px;font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(4rem,9vw,8rem);line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(200,212,221,.3)}
+.f-info{position:absolute;left:clamp(20px,3.5vw,48px);right:clamp(20px,3.5vw,48px);bottom:7svh}
+.f-info h3{font-size:clamp(1.7rem,3.4vw,3rem)}
+.f-type{margin:6px 0 16px}
+.f-specs{display:flex;flex-wrap:wrap;gap:0 28px;padding:14px 0;border-block:1px solid rgba(200,212,221,.25);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--silver);text-transform:uppercase}
+.f-specs b{color:var(--cyan);font-weight:400;margin-right:6px}
+.f-desc{max-width:52ch;margin:16px 0 22px;color:#b9c9d6}
+@media(max-width:899px){
+  .fleet-track{display:block;height:auto;width:auto}
+  .f-intro{width:auto;padding:clamp(90px,14vh,170px) var(--page-pad) 48px}
+  .f-panel{width:auto;height:74svh;border-left:0;border-top:1px solid var(--line)}
+  .f-hint{display:none}
+}
+
+/* ---------- kikötő: video background ---------- */
+.vbg{overflow:clip;padding-block:clamp(120px,20vh,220px)}
+.vbg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vbg-scrim{position:absolute;inset:0;background:
+  linear-gradient(180deg,var(--void) 0%,rgba(3,10,18,.25) 30%,rgba(3,10,18,.25) 60%,var(--void) 100%),
+  linear-gradient(90deg,rgba(3,10,18,.72) 0%,transparent 55%)}
+.vbg-inner{position:relative;z-index:2}
+.vbg .sec-lede{color:#b9c9d6}
+.glass{max-width:760px;border:1px solid var(--line);background:rgba(3,10,18,.55);backdrop-filter:blur(6px);padding:8px 28px}
+.glass .datarow{border-bottom:1px solid var(--line)}
+.glass .datarow:first-of-type{border-top:0}
+.glass .datarow:last-of-type{border-bottom:0}
+.datarow{display:flex;justify-content:space-between;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+.datarow:first-of-type{border-top:1px solid var(--line)}
+.datarow b{color:var(--silver);font-weight:500}
+.datarow span{color:var(--cyan);text-align:right}
+
+/* ---------- brand statement ---------- */
+.statement{border-top:1px solid var(--line)}
+.statement .mono{display:block;margin-bottom:28px}
+.statement-line{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;color:var(--silver);
+  font-size:clamp(2rem,6vw,4.8rem);line-height:1.12;letter-spacing:.01em}
+.statement-line em{font-style:normal;color:var(--cyan)}
+
+/* ---------- galéria: tilt kártyák ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,32px);margin-top:40px}
+@media(max-width:900px){.gallery{grid-template-columns:1fr}}
+.g-card .media{aspect-ratio:16/11;transition:transform .45s var(--ease-out);transform-style:preserve-3d;will-change:transform}
+.g-card figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:14px;
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--body)}
+.g-card figcaption b{color:var(--silver);font-weight:400}
+
+/* ---------- napló / form ---------- */
+.naplo{overflow:clip;border-top:1px solid var(--line)}
+.naplo-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16}
+.naplo-scrim{position:absolute;inset:0;background:linear-gradient(90deg,var(--void) 8%,rgba(3,10,18,.55) 60%,rgba(3,10,18,.35) 100%)}
+.compass{position:absolute;right:-140px;top:50%;width:min(60vw,560px);translate:0 -50%;opacity:.08;pointer-events:none}
+.compass *{stroke:var(--silver)}
+.log-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px)}
+@media(max-width:900px){.log-grid{grid-template-columns:1fr}}
+.log-form{display:grid;gap:34px}
+.field label{display:block;font-family:var(--mono);font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--body);margin-bottom:10px;transition:color .3s}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);
+  color:var(--silver);font-family:var(--mono);font-size:.95rem;letter-spacing:.06em;
+  padding:10px 2px;outline:none;caret-color:var(--cyan);
+  transition:border-color .3s,box-shadow .3s;border-radius:0}
+.field select{appearance:none;cursor:pointer}
+.field select option{background:var(--deep)}
+.field textarea{resize:vertical;min-height:110px}
+.field:focus-within label{color:var(--cyan)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--cyan);box-shadow:0 12px 18px -14px var(--cyan-dim)}
+.log-status{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;color:var(--cyan);min-height:1.2em}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:0 var(--page-pad);background:var(--void)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;padding:72px 0 56px}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+.foot-grid h4{font-family:var(--mono);font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan);font-weight:400;margin-bottom:18px}
+.foot-grid ul{list-style:none;display:grid;gap:10px}
+.foot-grid a{text-decoration:none;color:var(--body);font-size:.9rem;transition:color .3s}
+.foot-grid a:hover{color:var(--cyan)}
+.foot-tag{max-width:30ch;font-size:.9rem}
+.foot-word{font-family:Oswald,sans-serif;font-weight:600;font-size:clamp(2.6rem,10.5vw,9.5rem);line-height:.95;text-transform:uppercase;
+  white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(140,180,210,.22);user-select:none}
+.foot-legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:22px 0;margin-top:-6px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(147,167,182,.55)}
+.foot-legal a{color:var(--silver);text-decoration:none;transition:color .3s}
+.foot-legal a:hover{color:var(--cyan)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .hero-video{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a class="nav-logo" href="#">NEXUS<em>—</em>MARITIME</a>
+  <ul class="nav-links">
+    <li><a href="#akademia">Akademie</a></li>
+    <li><a href="#flotta">Flotte</a></li>
+    <li><a href="#kikoto">Hafen</a></li>
+    <li><a href="#kapcsolat">Logbuch</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="hero">
+  <img class="hero-img" src="img/vitorlas-iskola-hajo-berles.jpg"
+       alt="Rumpf und Kiel einer 32-Fuß-Yacht von unter Wasser, mit einfallenden Lichtstrahlen"
+       fetchpriority="high">
+  <!-- a -web fájlok generáltak; forrás-csere után újrakódolás:
+       ffmpeg -i vitorlas-hero-scrub.mp4 -an -c:v libx264 -g 1 -crf 26 -preset slow -pix_fmt yuv420p -movflags +faststart vitorlas-hero-scrub-web.mp4 -->
+  <video class="hero-video" id="heroVideo" src="img/vitorlas-hero-scrub-web.mp4"
+         muted playsinline preload="none" aria-hidden="true"></video>
+  <video class="hero-video" id="heroStatic" src="img/vitorlas-hero-static-web.mp4"
+         muted playsinline loop autoplay preload="auto" aria-hidden="true"></video>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-kicker mono">Segelschule &amp; Premium-Charter — Neusiedler See / Adria</p>
+    <div class="hero-titles">
+      <h1 class="hero-title t-intro">
+        <span class="line"><span class="word">Segelschule</span></span>
+        <span class="line"><span class="word">Yachtcharter</span></span>
+      </h1>
+      <div class="hero-title t-slogan" aria-hidden="true">
+        <span class="line"><span class="word">Nicht nur steuern.</span></span>
+        <span class="line"><span class="word">Beherrschen.</span></span>
+      </div>
+    </div>
+    <p class="hero-lede">ICC-Vorbereitung ohne Kompromisse und Premium-Charter — vom silbernen Spiegel des Neusiedler Sees bis ins tiefe Wasser der Adria.</p>
+    <div class="hero-cta-row">
+      <a class="cta" href="#kapcsolat">Logbuch-Eintrag beginnen</a>
+      <a class="cta cta-ghost" href="#akademia">Die Akademie</a>
+    </div>
+  </div>
+  <div class="hero-hint" aria-hidden="true"><span>Tauchen Sie ein</span></div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>ICC-Vorbereitung — <b>Neusiedl am See</b></span>
+    <span>Praktische Manöver — <b>Podersdorf am See</b></span>
+    <span>Prüfung — <b>Wien · ÖSV</b></span>
+    <span>Charter — <b>Neusiedler See · Adria</b></span>
+    <span>Geltungsbereich — <b>Binnen + See 12 sm</b></span>
+    <span>47°04′N 18°02′E</span>
+    <span>ICC-Vorbereitung — <b>Neusiedl am See</b></span>
+    <span>Praktische Manöver — <b>Podersdorf am See</b></span>
+    <span>Prüfung — <b>Wien · ÖSV</b></span>
+    <span>Charter — <b>Neusiedler See · Adria</b></span>
+    <span>Geltungsbereich — <b>Binnen + See 12 sm</b></span>
+    <span>47°04′N 18°02′E</span>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ 01 BEMUTATKOZÁS ============ -->
+<section class="section" id="bemutatkozas">
+  <div class="split rev">
+    <div class="split-media">
+      <figure class="media m-tall" data-reveal>
+        <img src="img/bemutatkozas-01.jpg" data-plx alt="Segelschule und Yachtcharter am Neusiedler See und in der Adria — der Kapitän an Deck, im Hafen und am Kartentisch">
+        <figcaption>GRÜNDUNGSKAPITÄN / AN DECK</figcaption>
+      </figure>
+    </div>
+    <div class="split-copy">
+      <div class="sec-head" data-reveal>
+        <span class="mono">01 / Vorstellung</span>
+        <h2>Keine Schule. Ein Maßstab.</h2>
+      </div>
+      <p data-reveal>Nexus Maritime ist eine Kapitänswerkstatt: wenige Boote, wenige Schülerinnen und Schüler, volle Aufmerksamkeit. Jede Ausbildung führt ein aktiver Seekapitän — einer, der den Neusiedler See von Eis zu Eis kennt und die Adria von Nachtüberfahrten.</p>
+      <p data-reveal>Bei uns ist die Prüfung kein Ziel, sondern eine Nebenwirkung. Das Ziel ist jene Ruhe, mit der man auch bei 25 Knoten Bora zuerst Kaffee eingießt und erst dann refft.</p>
+      <span class="sign" data-reveal>— Gründungskapitän · Nexus Maritime</span>
+      <!-- MINTA-ADATOK: a valós számokat írd át -->
+      <div class="stats" data-reveal>
+        <div class="stat"><b data-count="20" data-dec="0">0<i>+ Jahre</i></b><span>auf dem Wasser</span></div>
+        <div class="stat"><b data-count="15000" data-dec="0">0<i>+ sm</i></b><span>auf offener See</span></div>
+        <div class="stat"><b data-count="300" data-dec="0">0<i>+</i></b><span>bestandene Prüfungen</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 AKADÉMIA ============ -->
+<section class="section" id="akademia" style="border-top:1px solid var(--line)">
+  <div class="split">
+    <div class="split-copy">
+      <div class="sec-head" data-reveal>
+        <span class="mono">02 / Akademie</span>
+        <h2>Die Kunst der Navigation</h2>
+      </div>
+      <p class="sec-lede" data-reveal>Das Wissen beginnt am silbernen Spiegel des Neusiedler Sees und reicht bis in die dunklen Wellen der Adria. ICC-Vorbereitung ohne Kompromisse.</p>
+      <div class="datarow" data-reveal><b>Theorieausbildung</b><span>Neusiedl am See</span></div>
+      <div class="datarow" data-reveal><b>Praktische Manöver</b><span>Podersdorf am See</span></div>
+      <div class="datarow" data-reveal><b>ICC-Prüfungsort</b><span>Wien · ÖSV</span></div>
+      <div class="datarow" data-reveal><b>Geltungsbereich</b><span>Binnen + See 12 sm</span></div>
+    </div>
+    <div class="split-media">
+      <figure class="media m-tall" data-reveal>
+        <img src="img/akademia-01.jpg" data-plx alt="Seekarte am Kartentisch der Yacht, im roten Nachtlicht">
+        <figcaption>NAV / KARTENTISCH — 23:40 UTC</figcaption>
+      </figure>
+      <figure class="media m-off" data-reveal>
+        <img src="img/akademia-02.jpg" data-plx alt="Hand am Karbon-Steuerrad bei Nacht, mit leuchtendem Kompass">
+        <figcaption>RUDER / NACHTÜBUNG</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 FLOTTA — horizontális showcase ============ -->
+<!-- MINTA-ADATOK: hajónevek és specifikációk cserélendők a valósakra -->
+<section class="fleet" id="flotta">
+  <div class="fleet-track">
+    <div class="f-intro">
+      <div class="sec-head" data-reveal>
+        <span class="mono">03 / Flotte</span>
+        <h2>Drei Boote, drei Charaktere</h2>
+      </div>
+      <p class="sec-lede" data-reveal style="margin-bottom:0">Eine Gemeinsamkeit: jedes ist ein Instrument, kein Spielzeug. Auf die Ausbildung abgestimmt, für den Charter ausgestattet.</p>
+      <span class="mono f-hint" data-reveal>Scrollen — bis ans Ende des Stegs →</span>
+    </div>
+
+    <article class="f-panel">
+      <img src="img/hajo-01.jpg" alt="NM 32 Herrschaft in Krängung auf offenem Wasser, Charteryacht am Neusiedler See und in der Adria">
+      <div class="f-scrim"></div>
+      <span class="f-num">01</span>
+      <div class="f-info">
+        <h3>NM 32 — „Herrschaft“</h3>
+        <p class="f-type mono">Performance Cruiser · Ausbildung + Charter am Neusiedler See</p>
+        <div class="f-specs">
+          <span><b>Länge</b>9,75 m</span>
+          <span><b>Tiefgang</b>1,80 m</span>
+          <span><b>Segelfläche</b>54 m²</span>
+          <span><b>Plätze</b>8 Personen</span>
+        </div>
+        <p class="f-desc">Die Seele der Flotte. Scharf und schnell, dennoch verzeihend — die Hauptrolle bei den ICC-Übungen und im Charter am Neusiedler See.</p>
+        <a class="cta cta-ghost" href="#kapcsolat">Charter-Anfrage</a>
+      </div>
+    </article>
+
+    <article class="f-panel">
+      <img src="img/hajo-02.jpg" alt="NM 40 Horizont in der goldenen Stunde, Deckszene, Yachtcharter am Neusiedler See und in der Adria">
+      <div class="f-scrim"></div>
+      <span class="f-num">02</span>
+      <div class="f-info">
+        <h3>NM 40 — „Horizont“</h3>
+        <p class="f-type mono">Bluewater Cruiser · Adria-Wochen</p>
+        <div class="f-specs">
+          <span><b>Länge</b>12,20 m</span>
+          <span><b>Tiefgang</b>2,10 m</span>
+          <span><b>Segelfläche</b>86 m²</span>
+          <span><b>Plätze</b>10 Personen</span>
+        </div>
+        <p class="f-desc">Das Boot der Adria-Wochen. Langbeinig, komfortabel, für Nachtüberfahrten geboren — hier sammeln sich die Seemeilen.</p>
+        <a class="cta cta-ghost" href="#kapcsolat">Adria-Woche buchen</a>
+      </div>
+    </article>
+
+    <article class="f-panel">
+      <img src="img/hajo-03.jpg" alt="NM 28 Schülerin durchbricht die Oberfläche, praktische Prüfung zum Segelschein am Neusiedler See, Yachtcharter am Neusiedler See und in der Adria">
+      <div class="f-scrim"></div>
+      <span class="f-num">03</span>
+      <div class="f-info">
+        <h3>NM 28 — „Schüler“</h3>
+        <p class="f-type mono">Daysailer · die ersten echten Meilen</p>
+        <div class="f-specs">
+          <span><b>Länge</b>8,50 m</span>
+          <span><b>Tiefgang</b>1,45 m</span>
+          <span><b>Segelfläche</b>38 m²</span>
+          <span><b>Plätze</b>6 Personen</span>
+        </div>
+        <p class="f-desc">Womit alle anfangen. Klein, ehrlich und mit sofortiger Rückmeldung — hier lehrt noch das Boot den Fehler, nicht der Prüfer.</p>
+        <a class="cta cta-ghost" href="#kapcsolat">Zur Ausbildung anmelden</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 04 KIKÖTŐ ============ -->
+<section class="section vbg" id="kikoto">
+  <video class="vbg-video" src="img/kikoto-loop.mp4" muted playsinline loop preload="metadata" data-io aria-hidden="true"></video>
+  <div class="vbg-scrim" aria-hidden="true"></div>
+  <div class="vbg-inner">
+    <div class="sec-head" data-reveal>
+      <span class="mono">04 / Hafen</span>
+      <h2>Die Basis: Neusiedl am See</h2>
+    </div>
+    <p class="sec-lede" data-reveal>Geschützter Segelhafen am Nordufer des Neusiedler Sees. Fünfzehn Minuten, und wir sind auf offenem Wasser — und das Boot liegt auch sicher, wenn Sie nicht da sind.</p>
+    <div class="glass" data-reveal>
+      <div class="datarow"><b>Geschützte Stege</b><span>eigene Liegeplätze</span></div>
+      <div class="datarow"><b>Bewachtes Areal</b><span>rund um die Uhr mit Kamera</span></div>
+      <div class="datarow"><b>Strom · Wasser · WLAN</b><span>an jedem Liegeplatz</span></div>
+      <div class="datarow"><b>Kranen · Winterlager</b><span>vor Ort</span></div>
+      <div class="datarow"><b>Anfahrt</b><span>47°04′N 18°02′E</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND STATEMENT + GALÉRIA ============ -->
+<section class="section statement">
+  <span class="mono" data-reveal>Nexus Maritime</span>
+  <p class="statement-line" data-reveal style="--i:1">Der Neusiedler See lehrt <em>fühlen.</em></p>
+  <p class="statement-line" data-reveal style="--i:2">Die Adria lehrt <em>entscheiden.</em></p>
+
+  <div class="gallery">
+    <figure class="g-card" data-reveal style="--i:0">
+      <div class="media"><img src="img/flotta-01.jpg" alt="Paar an Deck der Yacht in der goldenen Stunde"></div>
+      <figcaption><b>Deck</b><span>Charter / goldene Stunde</span></figcaption>
+    </figure>
+    <figure class="g-card" data-reveal style="--i:1">
+      <div class="media"><img src="img/flotta-02.jpg" alt="Der Salon der Yacht — Mahagoni und warmes Licht"></div>
+      <figcaption><b>Salon</b><span>Mahagoni · Karbon</span></figcaption>
+    </figure>
+    <figure class="g-card" data-reveal style="--i:2">
+      <div class="media"><img src="img/flotta-03.jpg" alt="Delfine schwimmen neben dem Rumpf im tiefblauen Wasser"></div>
+      <figcaption><b>Offenes Wasser</b><span>Unsere Begleiter</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 05 KAPITÁNYI NAPLÓ ============ -->
+<section class="section naplo" id="kapcsolat">
+  <img class="naplo-bg" src="img/naplo-bg.jpg" alt="" aria-hidden="true">
+  <div class="naplo-scrim" aria-hidden="true"></div>
+  <svg class="compass" id="compass" viewBox="0 0 200 200" aria-hidden="true" fill="none" stroke-width="1">
+    <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/>
+    <path d="M100 10 L106 100 L100 190 L94 100 Z M10 100 L100 94 L190 100 L100 106 Z"/>
+    <g id="compass-ticks"></g>
+  </svg>
+
+  <div class="log-grid">
+    <div>
+      <div class="sec-head" data-reveal>
+        <span class="mono">05 / Logbuch</span>
+        <h2>Logbuch</h2>
+      </div>
+      <p class="sec-lede" data-reveal>Lassen Sie den Lärm zurück. Beginnen Sie schriftlich, wir navigieren die Details. Keine Telefonate — jeden Eintrag beantworten wir schriftlich.</p>
+    </div>
+
+    <form class="log-form" id="logform" novalidate>
+      <div class="field" data-reveal>
+        <label for="f-name">01 / Kennung — Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="field" data-reveal>
+        <label for="f-mail">02 / Koordinate — E-Mail</label>
+        <input id="f-mail" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="field" data-reveal>
+        <label for="f-route">03 / Kurs — Interesse</label>
+        <select id="f-route" name="route">
+          <option>ICC-Vorbereitung</option>
+          <option>Charter am Neusiedler See</option>
+          <option>Adria-Woche</option>
+          <option>Liegeplatz</option>
+          <option>Sonstige Anfrage</option>
+        </select>
+      </div>
+      <div class="field" data-reveal>
+        <label for="f-msg">04 / Eintrag — Nachricht</label>
+        <textarea id="f-msg" name="msg" required></textarea>
+      </div>
+      <div data-reveal>
+        <button class="cta" type="submit">Eintrag speichern</button>
+        <p class="log-status" id="log-status" role="status"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div>
+      <a class="nav-logo" href="#">NEXUS<em>—</em>MARITIME</a>
+      <p class="foot-tag" style="margin-top:18px">Kapitänswerkstatt am Nordufer des Neusiedler Sees. Ausbildung, Charter, Hafen — ohne Kompromisse.</p>
+    </div>
+    <div>
+      <h4>Deck</h4>
+      <ul>
+        <li><a href="#bemutatkozas">Vorstellung</a></li>
+        <li><a href="#akademia">Akademie</a></li>
+        <li><a href="#flotta">Flotte</a></li>
+        <li><a href="#kikoto">Hafen</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="#kapcsolat">Logbuch</a></li>
+        <li><a href="mailto:info@nexusmaritime.at">info@nexusmaritime.at</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Basis</h4>
+      <ul>
+        <li>Neusiedl am See, Segelhafen</li>
+        <li>47°04′N 18°02′E</li>
+        <li>Prüfung: Wien · Österreichischer Segel-Verband</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-word" aria-hidden="true">Nexus—Maritime</div>
+  <div class="foot-legal">
+    <span>© 2026 Nexus Maritime</span>
+    <span>Website erstellt von: <a href="https://conendigital.hu" target="_blank" rel="noopener">PIXELLA Webdesign</a></span>
+    <span>ICC · Charter · Hafen</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+'use strict';
+// ponytail: replace with the real inbox before go-live
+const CONTACT_EMAIL = 'info@nexusmaritime.hu';
+
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hasGSAP = typeof gsap !== 'undefined';
+const embedded = window.self !== window.top; // portfólió iframe-előnézet: csak az ambient loop fut
+
+/* ================= Lenis + GSAP wiring ================= */
+let lenis = null;
+if (!reduced && hasGSAP && typeof Lenis !== 'undefined') {
+  lenis = new Lenis();
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
+const mm = (hasGSAP && !reduced) ? gsap.matchMedia() : null;
+
+/* ================= HERO — ambient loop until first scroll, then scrub ================= */
+const heroVideo = document.getElementById('heroVideo');
+const heroStatic = document.getElementById('heroStatic');
+heroVideo.addEventListener('error', () => heroVideo.remove());   // fallback: poster <img> stays
+heroStatic.addEventListener('error', () => heroStatic.remove());
+if (reduced) { heroVideo.remove(); heroStatic.remove(); }
+
+let live = false; // false: ambient loop on top · true: scrub video showing
+function setLive(on) {
+  if (on === live) return;
+  live = on;
+  heroStatic.classList.toggle('off', on);
+  if (on) heroStatic.pause(); else heroStatic.play().catch(() => {});
+}
+
+let vTarget = 0, vRaf = null;
+function vTick() {
+  vRaf = null;
+  if (!heroVideo.duration) return;
+  const cur = heroVideo.currentTime;
+  const next = cur + (vTarget - cur) * 0.16;      // lerp — smooths Lenis/scrub steps
+  if (Math.abs(vTarget - next) > 0.02) {
+    heroVideo.currentTime = next;
+    vRaf = requestAnimationFrame(vTick);
+  } else {
+    heroVideo.currentTime = vTarget;
+  }
+}
+let vProgress = 0;
+function seekHero(p) {
+  vProgress = p;
+  if (!heroVideo.duration) return;
+  vTarget = p * (heroVideo.duration - 0.06);
+  if (!vRaf) vRaf = requestAnimationFrame(vTick);
+}
+// metadata may arrive after ScrollTrigger's first update (e.g. reload mid-pin)
+heroVideo.addEventListener('loadedmetadata', () => seekHero(vProgress));
+
+/* ================= HERO scroll choreography ================= */
+// phase 1 (load, ambient loop): "Vitorlás iskola / Vitorlás bérlés" + kicker
+// phase 2 (scrub end): "Nem csak vezetni. Uralni." + lede + CTAs
+const sloganWords = hasGSAP ? gsap.utils.toArray('.t-slogan .word') : [];
+
+if (hasGSAP && !reduced) {
+  gsap.from('.t-intro .word', { yPercent: 110, stagger: 0.12, duration: 0.9, ease: 'power3.out', delay: 0.35 });
+}
+
+if (mm) {
+  mm.add('(min-width: 769px)', () => {
+    // iframe-előnézetben a 18 MB-os scrub videó csak az első tényleges görgetésre indul el
+    let scrubLoaded = !embedded;
+    const loadScrub = () => { scrubLoaded = true; heroVideo.preload = 'auto'; heroVideo.load(); };
+    if (!embedded) loadScrub();
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#hero', start: 'top top', end: '+=260%',
+        pin: true, scrub: 0.7,
+        onUpdate: st => {
+          if (!scrubLoaded && st.progress > 0.002) loadScrub();
+          seekHero(st.progress); setLive(st.progress > 0.002);
+        }
+      }
+    });
+    tl.to(['.t-intro', '.hero-kicker'],
+        { autoAlpha: 0, ease: 'none', duration: 0.08 }, 0)
+      .set('.t-slogan', { autoAlpha: 1 }, 0.5)
+      .fromTo(sloganWords,
+        { yPercent: 118, skewY: 4, filter: 'blur(7px)' },
+        { yPercent: 0, skewY: 0, filter: 'blur(0px)', stagger: 0.1, ease: 'none', duration: 0.3, immediateRender: true }, 0.55)
+      .fromTo(['.hero-lede', '.hero-cta-row'],
+        { autoAlpha: 0, y: 26 },
+        { autoAlpha: 1, y: 0, stagger: 0.05, ease: 'none', duration: 0.15, immediateRender: true }, 0.8)
+      .fromTo('.hero-kicker',
+        { autoAlpha: 0, y: 26 },
+        { autoAlpha: 1, y: 0, ease: 'none', duration: 0.15, immediateRender: false }, 0.82);
+    return () => { seekHero(0); setLive(false); };
+  });
+  mm.add('(max-width: 768px)', () => {
+    // no pin on mobile — the ambient loop plays, intro title + everything visible with a gentle load-in
+    gsap.from(['.hero-kicker', '.hero-lede', '.hero-cta-row'],
+      { autoAlpha: 0, y: 20, stagger: 0.1, duration: 0.7, delay: 0.8 });
+  });
+} // no GSAP / reduced motion: intro title is visible by default — nothing to do
+
+addEventListener('DOMContentLoaded', () =>
+  requestAnimationFrame(() => document.body.classList.add('loaded')));
+
+/* ================= FLOTTA — horizontal showcase (desktop only) ================= */
+if (mm) {
+  mm.add('(min-width: 900px)', () => {
+    const track = document.querySelector('.fleet-track');
+    const amt = () => track.scrollWidth - window.innerWidth;
+    gsap.to(track, {
+      x: () => -amt(), ease: 'none',
+      scrollTrigger: {
+        trigger: '#flotta', start: 'top top', end: () => '+=' + amt(),
+        pin: true, scrub: 0.6, invalidateOnRefresh: true
+      }
+    });
+  });
+}
+
+/* ================= image parallax ================= */
+if (hasGSAP && !reduced) {
+  document.querySelectorAll('[data-plx]').forEach(img => {
+    gsap.fromTo(img, { yPercent: -6 }, {
+      yPercent: 6, ease: 'none',
+      scrollTrigger: { trigger: img.closest('figure'), start: 'top bottom', end: 'bottom top', scrub: true }
+    });
+  });
+}
+
+/* ================= section videos: play only in view ================= */
+document.querySelectorAll('video[data-io]').forEach(v => {
+  if (reduced) { v.remove(); return; }
+  new IntersectionObserver(([e]) =>
+    e.isIntersecting ? v.play().catch(() => {}) : v.pause(),
+  { threshold: 0.12 }).observe(v);
+});
+
+/* ================= gallery tilt (desktop pointer only) ================= */
+if (matchMedia('(pointer:fine)').matches && !reduced) {
+  document.querySelectorAll('.g-card .media').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${y * -6}deg)`;
+    });
+    card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+  });
+}
+
+/* ================= reveals + counters ================= */
+const io = new IntersectionObserver(entries => {
+  for (const e of entries) if (e.isIntersecting) {
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(b => { if (!b.dataset.done) countUp(b); });
+    io.unobserve(e.target);
+  }
+}, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+function countUp(el) {
+  el.dataset.done = 1;
+  const target = parseFloat(el.dataset.count), dec = +el.dataset.dec;
+  if (reduced) { el.firstChild.textContent = target.toLocaleString('hu-HU', { minimumFractionDigits: dec }); return; }
+  const t0 = performance.now(), dur = 1200;
+  (function tick(now) {
+    const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+    el.firstChild.textContent = (target * e).toLocaleString('hu-HU',
+      { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+
+/* ================= compass — rotates with scroll velocity ================= */
+const compass = document.getElementById('compass');
+const ticks = document.getElementById('compass-ticks');
+let tickHTML = '';
+for (let i = 0; i < 36; i++) {
+  const a = i * 10 * Math.PI / 180, r1 = i % 9 === 0 ? 82 : 90;
+  tickHTML += `<line x1="${100 + Math.cos(a) * r1}" y1="${100 + Math.sin(a) * r1}" x2="${100 + Math.cos(a) * 96}" y2="${100 + Math.sin(a) * 96}"/>`;
+}
+ticks.innerHTML = tickHTML;
+if (lenis && !reduced) {
+  let rot = 0;
+  lenis.on('scroll', e => {
+    rot += e.velocity * 0.12;
+    compass.style.transform = `rotate(${rot}deg)`;
+  });
+}
+
+/* ================= logbook form ================= */
+document.getElementById('logform').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  if (!f.reportValidity()) return;
+  const d = new FormData(f);
+  const body = `AZONOSÍTÓ: ${d.get('name')}%0AKOORDINÁTA: ${d.get('email')}%0AÚTVONAL: ${d.get('route')}%0A%0ABEJEGYZÉS:%0A${encodeURIComponent(d.get('msg'))}`;
+  // ponytail: mailto handoff — swap for a POST endpoint when there's a backend
+  location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Naplóbejegyzés — ' + d.get('route'))}&body=${body}`;
+  document.getElementById('log-status').textContent = '// BEJEGYZÉS RÖGZÍTVE — VÁLASZ ÍRÁSBAN ÉRKEZIK';
+});
+</script>
+</body>
+</html>

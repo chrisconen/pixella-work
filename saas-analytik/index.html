@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07070b" />
+    <meta name="description" content="PULSE — KI-Analytik, die Kundenabwanderung vorhersagt, bevor sie passiert. Churn Wochen im Voraus erkennen." />
+    <title>PULSE — Churn kommen sehen.</title>
+    <link rel="preload" href="./assets/media/poster.webp" as="image" type="image/webp" />
+    <link rel="preload" href="./assets/media/hero/frame-001.webp" as="image" type="image/webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="./assets/css/lenis.css" />
+    <link rel="stylesheet" href="./assets/css/pulse.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#features">Zu den Funktionen springen</a>
+
+    <div class="loading-curtain" data-loader aria-live="polite">
+      <div class="loading-mark">PULSE<span>●</span></div>
+      <div class="loading-line"><i data-loader-bar></i></div>
+      <p><span data-loader-value>0</span> / 100</p>
+    </div>
+
+    <header class="masthead" data-header>
+      <a class="wordmark" href="#hero" aria-label="PULSE Startseite">PULSE<span>●</span></a>
+      <nav class="mast-nav" aria-label="Abschnitte">
+        <a href="#features">Produkt</a>
+        <a href="#metrics">Ergebnisse</a>
+        <a href="#pricing">Preise</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-primary btn-small" href="#cta">Kostenlos starten</a>
+    </header>
+
+    <main>
+      <section id="hero" class="pin-section hero" data-section="hero">
+        <div class="sticky-stage hero-stage">
+          <img class="canvas-fallback" src="./assets/media/poster.webp" alt="Partikel formen sich zum PULSE Churn-Analytics-Dashboard" />
+          <canvas class="hero-canvas" data-hero-canvas aria-hidden="true"></canvas>
+          <div class="hero-shade" aria-hidden="true"></div>
+
+          <div class="hero-head" data-window="-0.1,0.42">
+            <p class="kicker">Churn-Intelligenz · KI-Analytik</p>
+            <h1>Churn kommen<br />sehen.</h1>
+            <p class="hero-sub">PULSE liest Tausende Verhaltenssignale und markiert die Kundinnen und Kunden, die kündigen werden — Wochen bevor sie es tun.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#pricing">Kostenlos starten</a>
+              <a class="btn btn-ghost" href="#features">So funktioniert es</a>
+            </div>
+          </div>
+
+          <div class="hero-mid" data-window="0.46,0.72">
+            <p>Signal für Signal<br />fügt sich das Bild.</p>
+          </div>
+
+          <div class="hero-closing" data-window="0.78,0.98">
+            <p>Ihre Daten wissen es längst.<br /><em>Jetzt wissen Sie es auch.</em></p>
+          </div>
+
+          <div class="scroll-cue" data-window="-0.1,0.2" aria-hidden="true"><i></i><span>Scrollen zum Zusammensetzen</span></div>
+          <div class="frame-counter" aria-hidden="true"><span data-frame-value>001</span><i></i><span>144</span></div>
+        </div>
+      </section>
+
+      <section id="logos" class="logos" aria-label="Im Einsatz bei">
+        <p class="logos-label">Retention-Teams arbeiten mit PULSE</p>
+        <ul class="logo-strip">
+          <li>NIMBUSLY</li>
+          <li>FERNWAVE</li>
+          <li>OCTARINE</li>
+          <li>QUANTA&nbsp;LABS</li>
+          <li>DRIFTLINE</li>
+          <li>HELIOMETRIC</li>
+        </ul>
+      </section>
+
+      <section id="features" class="pin-section features" data-section="features">
+        <div class="sticky-stage features-stage">
+          <div class="features-copy">
+            <p class="kicker">Was PULSE macht</p>
+            <h2>Drei Schritte.<br />Keine Überraschungen.</h2>
+          </div>
+          <div class="features-panel" data-features-panel>
+            <video class="panel-video" data-signal-video muted playsinline preload="auto" aria-hidden="true"></video>
+            <div class="panel-glass" aria-hidden="true"></div>
+
+            <article class="feature-block" data-window="0.05,0.37">
+              <span class="feature-index">01</span>
+              <h3>VORHERSAGEN</h3>
+              <p>Maschinell gelernte Risikowerte zeigen die Accounts, die in den nächsten 30, 60 und 90 Tagen am ehesten abwandern.</p>
+            </article>
+            <article class="feature-block" data-window="0.37,0.66">
+              <span class="feature-index">02</span>
+              <h3>ERKLÄREN</h3>
+              <p>Jede Vorhersage kommt mit dem Warum — Nutzungsrückgang, stille Admins, unbeantwortete Tickets — nach Wirkung sortiert.</p>
+            </article>
+            <article class="feature-block" data-window="0.66,0.96">
+              <span class="feature-index">03</span>
+              <h3>VERHINDERN</h3>
+              <p>Playbooks starten, sobald das Risiko steigt: Kontaktaufnahme, Angebote, Onboarding-Impulse — vor der Kündigungsmail.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="metrics" class="metrics" data-metrics>
+        <p class="kicker">Gemessen, nicht versprochen</p>
+        <h2>Churn sinkt. Zahlen lügen nicht.</h2>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <p class="metric-value"><b data-counter data-target="94">0</b><span>%</span></p>
+            <p class="metric-label">Treffsicherheit bei 90-Tage-Churn</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-value"><b data-counter data-target="12000">0</b></p>
+            <p class="metric-label">Teams beobachten ihre Kundschaft mit PULSE</p>
+          </div>
+          <div class="metric-card">
+            <p class="metric-value"><span>$</span><b data-counter data-target="40">0</b><span>M</span></p>
+            <p class="metric-label">wiederkehrender Umsatz im Vorjahr gerettet</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="product" class="product">
+        <p class="kicker">Im Produkt</p>
+        <h2>Das Dashboard, von dem Ihr Retention-Team träumt.</h2>
+        <div class="browser-frame" role="img" aria-label="PULSE Dashboard-Vorschau: Churn-Risiko-Diagramm und Liste gefährdeter Accounts">
+          <div class="browser-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="browser-url">app.pulse.io/dashboard</span>
+          </div>
+          <div class="mini-dash">
+            <aside class="dash-side">
+              <p class="dash-logo">PULSE<span>●</span></p>
+              <ul>
+                <li class="is-active">Übersicht</li>
+                <li>Risiko-Radar</li>
+                <li>Segmente</li>
+                <li>Playbooks</li>
+                <li>Berichte</li>
+              </ul>
+              <p class="dash-user">Ava R. · Growth</p>
+            </aside>
+            <div class="dash-main">
+              <div class="dash-kpis">
+                <div class="kpi"><span>Gefährdeter MRR</span><b>182 Tsd. €</b><i class="down">−12 % Wo.</i></div>
+                <div class="kpi"><span>Markierte Accounts</span><b>47</b><i class="down">−8 Wo.</i></div>
+                <div class="kpi"><span>Rettungen diesen Monat</span><b>23</b><i class="up">+6 Wo.</i></div>
+              </div>
+              <div class="dash-chart">
+                <div class="chart-head"><span>Churn-Risiko — nächste 90 Tage</span><span class="chart-tag">Prognose</span></div>
+                <svg viewBox="0 0 560 180" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="riskFill" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#7C5CFF" stop-opacity=".35" />
+                      <stop offset="1" stop-color="#7C5CFF" stop-opacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <g stroke="#e8e6f4" stroke-width="1">
+                    <line x1="0" y1="45" x2="560" y2="45" /><line x1="0" y1="90" x2="560" y2="90" /><line x1="0" y1="135" x2="560" y2="135" />
+                  </g>
+                  <path d="M0,150 L60,138 L120,142 L180,120 L240,126 L300,98 L360,104 L420,74 L420,180 L0,180 Z" fill="url(#riskFill)" />
+                  <path d="M0,150 L60,138 L120,142 L180,120 L240,126 L300,98 L360,104 L420,74" fill="none" stroke="#7C5CFF" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M420,74 L480,52 L560,30" fill="none" stroke="#7C5CFF" stroke-width="2.5" stroke-dasharray="6 7" stroke-linecap="round" opacity=".65" />
+                  <circle cx="420" cy="74" r="5" fill="#7C5CFF" />
+                  <circle cx="420" cy="74" r="10" fill="#7C5CFF" opacity=".18" />
+                </svg>
+                <div class="chart-note">Heute<em>· prognostiziert ohne Eingriff</em></div>
+              </div>
+              <div class="dash-table">
+                <div class="tr th"><span>Account</span><span>Risiko</span><span>Signal</span><span></span></div>
+                <div class="tr"><span>Bramblewood GmbH</span><span class="risk high"><i style="width:86%"></i>86</span><span>Logins −64 %</span><span class="act">Playbook</span></div>
+                <div class="tr"><span>Copperfield SaaS</span><span class="risk high"><i style="width:71%"></i>71</span><span>Champion gegangen</span><span class="act">Playbook</span></div>
+                <div class="tr"><span>Lakemoor Digital</span><span class="risk mid"><i style="width:54%"></i>54</span><span>2 offene Tickets</span><span class="act">Beobachten</span></div>
+                <div class="tr"><span>Verdant Metrics</span><span class="risk low"><i style="width:23%"></i>23</span><span>Gesunde Nutzung</span><span class="act">—</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing" data-pricing data-billing="monthly">
+        <p class="kicker">Preise</p>
+        <h2>Kundschaft halten kostet weniger, als eine zu verlieren.</h2>
+        <div class="billing-toggle">
+          <span id="bill-monthly-label">Monatlich</span>
+          <button type="button" class="toggle" data-billing-toggle role="switch" aria-checked="false" aria-label="Jährlich zahlen — zwei Monate gratis"><i></i></button>
+          <span id="bill-annual-label">Jährlich <em>2 Monate gratis</em></span>
+        </div>
+        <div class="plan-grid">
+          <article class="plan" data-plan="starter">
+            <h3>Starter</h3>
+            <p class="plan-price"><b data-price data-monthly="0 €" data-annual="0 €">0 €</b><span>/Mon.</span></p>
+            <p class="plan-note" data-billing-note></p>
+            <ul>
+              <li>1 Workspace</li>
+              <li>500 verfolgte Accounts</li>
+              <li>Wöchentlicher Risiko-Report</li>
+              <li>CSV-Import</li>
+            </ul>
+            <a class="btn btn-ghost-dark" href="#cta">Kostenlos starten</a>
+          </article>
+          <article class="plan is-featured" data-plan="growth">
+            <p class="plan-flag">Am beliebtesten</p>
+            <h3>Growth</h3>
+            <p class="plan-price"><b data-price data-monthly="49 €" data-annual="41 €">49 €</b><span>/Mon.</span></p>
+            <p class="plan-note" data-billing-note></p>
+            <ul>
+              <li>Unbegrenzt verfolgte Accounts</li>
+              <li>Churn-Alarme in Echtzeit</li>
+              <li>Erklärbare Risikowerte</li>
+              <li>3 automatisierte Playbooks</li>
+            </ul>
+            <a class="btn btn-primary" href="#cta">Kostenlos starten</a>
+          </article>
+          <article class="plan" data-plan="scale">
+            <h3>Scale</h3>
+            <p class="plan-price"><b data-price data-monthly="199 €" data-annual="166 €">199 €</b><span>/Mon.</span></p>
+            <p class="plan-note" data-billing-note></p>
+            <ul>
+              <li>Eigene Churn-Modelle</li>
+              <li>Unbegrenzte Playbooks</li>
+              <li>SSO, API &amp; Audit-Log</li>
+              <li>Eigene Retention-Analystin</li>
+            </ul>
+            <a class="btn btn-ghost-dark" href="#cta">Vertrieb kontaktieren</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq" class="faq" data-faq>
+        <p class="kicker">Fragen</p>
+        <h2>Bevor Sie fragen.</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1"><span>Wie sagt PULSE Churn vorher?</span><i aria-hidden="true"></i></button>
+            <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <p>PULSE trainiert auf Ihren Produktnutzungs-, Abrechnungs- und Support-Ereignissen und bewertet jeden Account täglich. Die Modelle werden wöchentlich auf Ihren eigenen Daten neu angepasst, damit die Vorhersagen widerspiegeln, wie sich <em>Ihre</em> Kundschaft verhält — nicht ein Branchendurchschnitt.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2"><span>Welche Daten muss ich anbinden?</span><i aria-hidden="true"></i></button>
+            <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+              <p>Die meisten Teams starten mit einer Quelle — Stripe, Segment oder einem Produkt-Event-Webhook — und sehen erste Vorhersagen innerhalb von 48 Stunden. Mehr Quellen schärfen das Signal, nötig ist keine.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3"><span>Sind meine Kundendaten sicher?</span><i aria-hidden="true"></i></button>
+            <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+              <p>Daten werden bei Übertragung und Speicherung verschlüsselt, Modelle in isolierten Mandanten trainiert, und nichts wird zwischen Kunden geteilt. SOC-2-Type-II-Bericht auf Anfrage.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4"><span>Kann ich jederzeit kündigen?</span><i aria-hidden="true"></i></button>
+            <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+              <p>Ja — Monatspläne mit einem Klick, Jahrespläne anteilig rückerstattet. Wir sagen Ihren Churn lieber voraus, als ihn zu verursachen.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="cta">
+        <video class="cta-video" data-calm-video muted playsinline autoplay loop preload="auto" aria-hidden="true"></video>
+        <div class="cta-shade" aria-hidden="true"></div>
+        <div class="cta-inner">
+          <p class="kicker">Gratis für 500 Accounts · ohne Kreditkarte</p>
+          <h2>Schluss mit Raten.<br /><em>Fangen Sie an zu halten.</em></h2>
+          <a class="btn btn-primary btn-big" href="#pricing">Kostenlos starten</a>
+        </div>
+        <footer>
+          <a class="wordmark" href="#hero">PULSE<span>●</span></a>
+          <p>Fiktives Produkt · zu Demonstrationszwecken gebaut</p>
+          <p>© 2026 Pulse Analytics</p>
+        </footer>
+      </section>
+    </main>
+
+    <noscript><p class="noscript">JavaScript is required for the scroll-driven assembly.</p></noscript>
+    <script src="./assets/js/lenis.min.js"></script>
+    <script src="./assets/js/pulse.js"></script>
+  </body>
+</html>

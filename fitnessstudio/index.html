@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0c0c0c" />
+    <meta name="description" content="FORGE — Kraftstudio in Wien. Keine Spiegel. Keine Abkürzungen. Verdien es dir." />
+    <title>FORGE — Kraftstudio, Wien</title>
+    <link rel="preload" href="./assets/media/poster.webp" as="image" type="image/webp" />
+    <link rel="preload" href="./assets/media/hero/frame-001.webp" as="image" type="image/webp" />
+    <link rel="stylesheet" href="./assets/css/lenis.css" />
+    <link rel="stylesheet" href="./assets/css/forge.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#programs">Zu den Programmen springen</a>
+
+    <div class="loading-curtain" data-loader aria-live="polite">
+      <div class="loading-mark">FORGE</div>
+      <div class="loading-line"><i data-loader-bar></i></div>
+      <p><span data-loader-value>0</span> / 100</p>
+    </div>
+
+    <div class="atmosphere" aria-hidden="true">
+      <div class="grain"></div>
+      <div class="vignette"></div>
+    </div>
+
+    <header class="masthead" data-header>
+      <a class="wordmark" href="#hero" aria-label="FORGE Startseite"><span>FORGE</span><i></i></a>
+      <p class="locale">Wien · Gumpendorfer Straße 8</p>
+      <a class="cta-link" href="#signup"><span>Erste Woche gratis</span><b aria-hidden="true">→</b></a>
+    </header>
+
+    <main>
+      <section id="hero" class="scroll-chapter hero" data-chapter="hero">
+        <div class="sticky-stage hero-stage">
+          <img class="canvas-fallback" src="./assets/media/poster.webp" alt="Sportler klatscht gekreidete Hände, Kreidewolke in einem Lichtstrahl" />
+          <canvas class="chalk-canvas" data-chalk-canvas aria-hidden="true"></canvas>
+          <div class="hero-shade" aria-hidden="true"></div>
+
+          <div class="hero-title" data-window="-0.12,0.34">
+            <p class="hero-kicker">Kraftstudio · Wien</p>
+            <h1>FORGE</h1>
+            <p class="hero-motto">Verdien es dir.</p>
+          </div>
+
+          <div class="hero-mid" data-window="0.44,0.7">
+            <p>Kreide drauf.<br />Hier wird nichts geschenkt.</p>
+          </div>
+
+          <div class="hero-closing" data-window="0.76,0.98">
+            <p>Das Eisen wartet.</p>
+            <span>Weiterscrollen</span>
+          </div>
+
+          <div class="scroll-cue" data-window="-0.12,0.2" aria-hidden="true"><i></i><span>Scrollen</span></div>
+          <div class="frame-counter" aria-hidden="true"><span data-frame-value>001</span><i></i><span>144</span></div>
+        </div>
+      </section>
+
+      <section id="philosophy" class="scroll-chapter philosophy" data-chapter="philosophy" data-line="1">
+        <div class="sticky-stage philosophy-stage">
+          <span class="philosophy-kicker">Hausregeln</span>
+          <div class="philosophy-lines">
+            <p class="philosophy-line" data-line-index="1">Keine Spiegel.</p>
+            <p class="philosophy-line" data-line-index="2">Keine Maschinen, die die Arbeit für dich machen.</p>
+            <p class="philosophy-line" data-line-index="3">Keine Abkürzungen.</p>
+          </div>
+          <p class="philosophy-count" aria-hidden="true"><span data-line-value>01</span> / 03</p>
+        </div>
+      </section>
+
+      <section id="programs" class="programs" data-chapter="programs">
+        <video class="section-video" data-programs-video muted playsinline loop preload="none" aria-hidden="true"></video>
+        <div class="section-shade" aria-hidden="true"></div>
+        <div class="section-head">
+          <span class="kicker">Training</span>
+          <h2>Wähl deine Arbeit.</h2>
+        </div>
+        <div class="programs-track" data-programs-track>
+          <article class="program-card">
+            <span class="card-index">01</span>
+            <h3>Kraft</h3>
+            <p>Kniebeuge. Drücken. Ziehen. Schwer, langsam, ehrlich. Die Hantel verhandelt nicht.</p>
+            <span class="card-tag">Mo / Mi / Fr</span>
+          </article>
+          <article class="program-card">
+            <span class="card-index">02</span>
+            <h3>Kondition</h3>
+            <p>Schlitten, Seile, Intervalle. Zuerst die Lunge, dann die Bequemlichkeit. Du gehst leichter.</p>
+            <span class="card-tag">Di / Do / Sa</span>
+          </article>
+          <article class="program-card">
+            <span class="card-index">03</span>
+            <h3>Team</h3>
+            <p>Kleine Gruppen. Gemeinsame Stangen. Niemand versteckt sich, niemand trägt dich.</p>
+            <span class="card-tag">Jeden Abend</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="coaches" class="coaches" data-chapter="coaches">
+        <div class="section-head">
+          <span class="kicker">Coaches</span>
+          <h2>Sie heben mit.</h2>
+        </div>
+        <div class="coaches-grid">
+          <article class="coach-card">
+            <span class="coach-avatar" aria-hidden="true">LB</span>
+            <h3>Lukas Berger</h3>
+            <p>Cheftrainer · Kraftdreikampf</p>
+          </article>
+          <article class="coach-card">
+            <span class="coach-avatar" aria-hidden="true">MH</span>
+            <h3>Marie Huber</h3>
+            <p>Kondition</p>
+          </article>
+          <article class="coach-card">
+            <span class="coach-avatar" aria-hidden="true">DG</span>
+            <h3>David Gruber</h3>
+            <p>Teamtraining</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="results" class="results" data-chapter="results" data-counters="idle">
+        <video class="section-video" data-results-video muted playsinline loop preload="none" aria-hidden="true"></video>
+        <div class="section-shade" aria-hidden="true"></div>
+        <dl class="results-strip">
+          <div class="result">
+            <dd><strong class="counter" data-count-to="412">0</strong></dd>
+            <dt>Mitglieder</dt>
+          </div>
+          <div class="result">
+            <dd><strong class="counter" data-count-to="380">0</strong></dd>
+            <dt>PRs diesen Monat</dt>
+          </div>
+          <div class="result">
+            <dd><strong class="counter" data-count-to="9">0</strong></dd>
+            <dt>Jahre geöffnet</dt>
+          </div>
+        </dl>
+      </section>
+
+      <section id="pricing" class="pricing" data-chapter="pricing">
+        <div class="section-head">
+          <span class="kicker">Mitgliedschaft</span>
+          <h2>Zahl für den Zugang.<br /><em>Schwitz für den Rest.</em></h2>
+        </div>
+        <div class="tiers">
+          <article class="tier">
+            <h3>Eisen</h3>
+            <p class="tier-price">14,900 <span>€ / Monat</span></p>
+            <ul>
+              <li>Offenes Training, 06–22</li>
+              <li>Langhanteln, Plattformen, Kreide</li>
+              <li>Kein Vertrag</li>
+            </ul>
+            <a class="tier-cta" href="#signup">Erste Woche gratis</a>
+          </article>
+          <article class="tier is-featured">
+            <span class="tier-flag">Am häufigsten gewählt</span>
+            <h3>Geschmiedet</h3>
+            <p class="tier-price">19,900 <span>€ / Monat</span></p>
+            <ul>
+              <li>Alles aus Eisen</li>
+              <li>Alle betreuten Kurse</li>
+              <li>Krafttest jedes Quartal</li>
+            </ul>
+            <a class="tier-cta" href="#signup">Erste Woche gratis</a>
+          </article>
+          <article class="tier">
+            <h3>All-In</h3>
+            <p class="tier-price">27,900 <span>€ / Monat</span></p>
+            <ul>
+              <li>Alles aus Geschmiedet</li>
+              <li>Monatliches Einzelcoaching</li>
+              <li>Ein Programm, für dich geschrieben</li>
+            </ul>
+            <a class="tier-cta" href="#signup">Erste Woche gratis</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="schedule" class="schedule" data-chapter="schedule">
+        <div class="section-head">
+          <span class="kicker">Stundenplan</span>
+          <h2>Komm vorbei.</h2>
+        </div>
+        <div class="schedule-table-wrap">
+          <table class="schedule-table">
+            <thead>
+              <tr><th scope="col">Kurs</th><th scope="col">Mo</th><th scope="col">Di</th><th scope="col">Mi</th><th scope="col">Do</th><th scope="col">Fr</th><th scope="col">Sa</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Kraft</th><td>06:00</td><td>—</td><td>06:00</td><td>—</td><td>06:00</td><td>09:00</td></tr>
+              <tr><th scope="row">Kondition</th><td>—</td><td>12:15</td><td>—</td><td>12:15</td><td>—</td><td>10:30</td></tr>
+              <tr><th scope="row">Team</th><td>18:30</td><td>18:30</td><td>18:30</td><td>18:30</td><td>18:30</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="schedule-foot">
+          <address class="address-block">
+            <span class="kicker">So findest du uns</span>
+            <p>FORGE<br />Gumpendorfer Straße 8<br />1060 Wien</p>
+            <p class="address-hours">Mo–Fr 06–22 · Sa 08–18</p>
+          </address>
+
+          <div id="signup" class="signup">
+            <span class="kicker">Erste Woche gratis</span>
+            <h2>Einmal reinkommen.<br /><em>Danach entscheiden.</em></h2>
+            <form class="signup-form" data-signup-form novalidate>
+              <label><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
+              <label><span>E-Mail</span><input type="email" name="email" autocomplete="email" required /></label>
+              <button type="submit"><span>Woche sichern</span><i aria-hidden="true">→</i></button>
+              <p class="form-status" data-form-status aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+
+        <footer>
+          <a class="wordmark" href="#hero"><span>FORGE</span><i></i></a>
+          <p>Fiktives Studio · Wien</p>
+          <p>© MMXXVI</p>
+        </footer>
+      </section>
+    </main>
+
+    <noscript><p class="noscript">JavaScript is required for the scroll-driven sequence.</p></noscript>
+    <script src="./assets/js/lenis.min.js"></script>
+    <script src="./assets/js/forge.js"></script>
+  </body>
+</html>
