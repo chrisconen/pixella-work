@@ -15,5 +15,7 @@ Jeder Ordner ist eine eigenständige Seite: `/<slug>/index.html`.
 | streetwear | E-Commerce Drop |
 | saas-analytik | SaaS / Churn-Analytik |
 | veldara | 3D-Web-Framework |
+| modeshop | Mode-Webshop |
+| lucius-burger | Burger & BBQ Restaurant |
 
 Alle fiktiv. Preise, Adressen und Kennzahlen sind auf Österreich gesetzt.

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lucius Burger — Fire-born since 2016 | Premium Angus Burger &amp; BBQ, Wien</title>
+<meta name="description" content="Argentinisches Weiderind, 45 Tage gereift, Hickory-Glut. Premium-Burger und BBQ in der Glutgasse. Online bestellen und Tisch reservieren.">
+<meta name="theme-color" content="#070504">
+<!-- Demó: kitalált étterem, kitalált címmel és értékelésekkel. A JSON-LD
+     bemutató célú — nem kerülhet a Google indexébe valós vállalkozásként. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://chrisconen.github.io/pixella-work/lucius-burger/">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:locale" content="de_AT">
+<meta property="og:site_name" content="Lucius Burger">
+<meta property="og:title" content="Lucius Burger — Fire-born since 2016">
+<meta property="og:description" content="Das Feuer hat uns den Namen gegeben. Wir haben es nur nicht ausgehen lassen. Premium-Angus aus Argentinien, 45 Tage gereift — Wien, Glutgasse 14.">
+<meta property="og:url" content="https://chrisconen.github.io/pixella-work/lucius-burger/">
+<meta property="og:image" content="https://chrisconen.github.io/pixella-work/lucius-burger/media/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lucius Burger — in seine Schichten zerlegter Premium-Angus-Burger über der Glut">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lucius Burger — Fire-born since 2016">
+<meta name="twitter:description" content="Premium-Angus aus Argentinien, 45 Tage gereift, Hickory-Glut. Wien, Glutgasse 14.">
+<meta name="twitter:image" content="https://chrisconen.github.io/pixella-work/lucius-burger/media/og-cover.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🔥</text></svg>">
+<link rel="preload" as="image" href="media/hero/frame-001.webp">
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/anton-400.ttf" crossorigin>
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/manrope-400.ttf" crossorigin>
+<link rel="stylesheet" href="assets/css/lenis.css">
+<link rel="stylesheet" href="assets/css/lucius.css">
+<noscript><style>
+  .curtain,.atmos,.cursor,.hero-scrollhint,.masthead-actions,.filterbar,.daily-tabs,
+  .reserve-controls,.floorplan-wrap,.ticker{display:none!important}
+  .hero{height:auto}.sticky-stage{position:relative;height:70svh}
+  .hero-canvas{display:none}.hero-fallback{display:block}
+  .nojs{display:block!important}
+  .section:empty,.story:empty{display:none}
+</style></noscript>
+</head>
+<body>
+
+<a class="skip-link" href="#menu">Zur Speisekarte springen</a>
+
+<noscript>
+  <div class="nojs">
+    <b>Lucius Burger</b> — Speisekarte, Warenkorb und Tischreservierung brauchen JavaScript.
+    Bitte einschalten oder ruf uns an: <a class="link" href="tel:+4315550116">+43 1 555 0116</a>.
+    <span>1070 Wien, Glutgasse 14 &middot; Mo&ndash;Do 11:30&ndash;23:00 &middot; Fr&ndash;Sa 11:30&ndash;00:30 &middot; So 11:30&ndash;22:00</span>
+  </div>
+</noscript>
+
+<!-- ══ PRELOADER ══════════════════════════════════════════════════════ -->
+<div class="curtain" id="curtain" aria-hidden="true">
+  <div class="curtain-inner">
+    <div class="curtain-mark">LUCIUS</div>
+    <div class="curtain-sub">Fire-born since 2016</div>
+    <div class="curtain-bar"><i id="curtainBar"></i></div>
+    <div class="curtain-pct"><span id="curtainPct">0</span>%<em>&nbsp;· wird angezündet</em></div>
+  </div>
+</div>
+
+<!-- ══ ATMOSZFÉRA (fix rétegek) ═══════════════════════════════════════ -->
+<div class="atmos" aria-hidden="true">
+  <canvas id="embers" class="atmos-embers"></canvas>
+  <div class="atmos-vignette"></div>
+  <div class="atmos-grain"></div>
+</div>
+<div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+
+<!-- ══ FEJLÉC ═════════════════════════════════════════════════════════ -->
+<header class="masthead" id="masthead">
+  <a class="brand" href="#top" aria-label="Lucius Burger — zurück nach oben">
+    <span class="brand-mark">LUCIUS</span>
+    <span class="brand-sub">Burger &middot; Pit &middot; Bar</span>
+  </a>
+  <nav class="mainnav" aria-label="Hauptnavigation">
+    <a href="#daily">Tagesmenü</a>
+    <a href="#menu">Speisekarte</a>
+    <a href="#story">Die Geschichte</a>
+    <a href="#team">Das Team</a>
+    <a href="#reserve">Reservierung</a>
+    <a href="#info">Lieferung</a>
+  </nav>
+  <div class="masthead-actions">
+    <span class="openbadge" id="openBadge" hidden><i></i><b></b><em></em></span>
+    <button class="btn btn-ghost btn-reserve" type="button" data-open-reserve>Tisch reservieren</button>
+    <button class="btn btn-cart" type="button" id="cartToggle" aria-label="Warenkorb öffnen" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M4 6h16l-1.6 10.2a2 2 0 0 1-2 1.8H7.6a2 2 0 0 1-2-1.8L4 6Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 6a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+      <span class="cart-badge" id="cartBadge" hidden>0</span>
+    </button>
+    <button class="burger-btn" type="button" id="navToggle" aria-label="Menü" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ══ 01 · HERO — scroll-scrubbed frame sequence ═════════════════════ -->
+<section class="hero scroll-chapter" id="hero">
+  <div class="sticky-stage">
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <video class="hero-fallback" id="heroFallback" src="media/hamburger.mp4" poster="media/hamburger.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <div class="hero-type">
+      <div class="hero-line hero-line-a"><span data-split>LUCIUS</span></div>
+      <div class="hero-line hero-line-b"><span data-split>BURGER</span></div>
+    </div>
+
+    <p class="hero-kicker" data-window="0,.13">Premium-Angus &middot; Hickory-Glut &middot; Wien</p>
+
+    <ul class="hero-specs" data-window=".46,.76">
+      <li><b>45</b> Tage argentinischer Angus</li>
+      <li><b>24</b> Stunden Sauerteig-Brioche</li>
+      <li><b>260&deg;C</b> Hickory-Glut</li>
+    </ul>
+
+    <div class="hero-rating" data-window=".46,.76">
+      <span class="stars" id="heroStars" aria-hidden="true"></span>
+      <b>4,9</b><span>1.842 Gästebewertungen</span>
+    </div>
+
+    <div class="hero-cta" data-window=".82,1.2">
+      <a class="btn btn-solid" href="#menu" data-magnetic>Jetzt bestellen</a>
+      <button class="btn btn-outline" type="button" data-open-reserve data-magnetic>Tisch reservieren</button>
+    </div>
+
+    <div class="hero-scrollhint" data-window="0,.07"><span>Scrollen</span><i></i></div>
+    <div class="hero-progress" aria-hidden="true"><i id="heroBar"></i></div>
+  </div>
+</section>
+
+<!-- ══ 02 · TICKER ════════════════════════════════════════════════════ -->
+<div class="ticker" id="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<!-- ══ 03 · SIGNATURE ═════════════════════════════════════════════════ -->
+<section class="section signature" id="signature">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>01 &mdash; Die drei, für die man kommt</span>
+    <h2 class="h1" data-reveal data-split>Signature</h2>
+    <p class="lede" data-reveal>Über vierzig Positionen stehen auf der Karte. Diese drei machen die Hälfte aus.</p>
+  </div>
+  <div class="signature-grid" id="signatureGrid"></div>
+</section>
+
+<!-- ══ 04 · NAPI MENÜ ═════════════════════════════════════════════════ -->
+<section class="section daily" id="daily">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>02 &mdash; Pit Lunch &middot; 11:30&ndash;15:00 Uhr, solange der Vorrat reicht</span>
+    <h2 class="h1" data-reveal data-split>Tagesmenü</h2>
+    <p class="lede" data-reveal>Jeden Morgen ein Gericht. Ist es zu Mittag aus, legen wir an dem Tag nichts mehr nach &mdash; das ist kein Marketing, das ist die Kapazität der Küche.</p>
+  </div>
+  <div class="daily-tabs" id="dailyTabs" role="tablist" aria-label="Tage des Tagesmenüs"></div>
+  <div class="daily-stage" id="dailyStage"></div>
+</section>
+
+<!-- ══ 05 · ÉTLAP ═════════════════════════════════════════════════════ -->
+<section class="section menu" id="menu">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>03 &mdash; Die ganze Karte</span>
+    <h2 class="h1" data-reveal data-split>Speisekarte</h2>
+    <p class="lede" data-reveal>Preise in Euro, Portionsgrößen in amerikanisch.</p>
+  </div>
+  <div class="filterbar" id="filterBar" role="tablist" aria-label="Kategorien der Speisekarte"></div>
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<!-- ══ 06 · SZTORI ════════════════════════════════════════════════════ -->
+<section class="story" id="story"></section>
+
+<!-- ══ 07 · FILOZÓFIA ═════════════════════════════════════════════════ -->
+<section class="section philosophy" id="philosophy">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>04 &mdash; Unternehmensphilosophie</span>
+    <h2 class="h1" data-reveal data-split>Drei Regeln</h2>
+  </div>
+  <div class="pillars" id="pillars"></div>
+  <div class="stats" id="stats"></div>
+</section>
+
+<!-- ══ 08 · BESZÁLLÍTÓK ═══════════════════════════════════════════════ -->
+<section class="section suppliers" id="suppliers">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>05 &mdash; Bei wem wir einkaufen</span>
+    <h2 class="h1" data-reveal data-split>Lieferanten</h2>
+    <p class="lede" data-reveal>Es sind sechs. Alle sechs nennen wir beim Namen, weil wir zu ihnen stehen.</p>
+  </div>
+  <div class="supplier-strip" id="supplierStrip"></div>
+</section>
+
+<!-- ══ 09 · CSAPAT ════════════════════════════════════════════════════ -->
+<section class="section team" id="team">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>06 &mdash; Die Küche</span>
+    <h2 class="h1" data-reveal data-split>Das Team</h2>
+    <p class="lede" data-reveal>Wir sind elf. Fünf davon entscheiden, wie dein Abendessen wird.</p>
+  </div>
+  <div class="team-grid" id="teamGrid"></div>
+</section>
+
+<!-- ══ 10 · ÉRTÉKELÉSEK ═══════════════════════════════════════════════ -->
+<section class="section reviews" id="reviews">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>07 &mdash; Unsere Gäste</span>
+    <h2 class="h1" data-reveal data-split>4,9 / 5</h2>
+    <p class="lede" data-reveal>Durchschnitt aus 1.842 Bewertungen. Die mit einem Stern haben wir stehen lassen &mdash; es sind zwei.</p>
+  </div>
+  <div class="review-grid" id="reviewGrid"></div>
+</section>
+
+<!-- ══ 11 · ASZTALFOGLALÁS ════════════════════════════════════════════ -->
+<section class="section reserve" id="reserve">
+  <div class="section-head">
+    <span class="eyebrow" data-reveal>08 &mdash; Tischreservierung</span>
+    <h2 class="h1" data-reveal data-split>Wähle deinen Tisch</h2>
+    <p class="lede" data-reveal>Keine Liste, ein Grundriss. Such dir aus, wo du sitzen willst.</p>
+  </div>
+
+  <div class="reserve-controls" role="group" aria-label="Parameter der Reservierung">
+    <label class="field">
+      <span>Datum</span>
+      <input type="date" id="resDate">
+    </label>
+    <label class="field">
+      <span>Uhrzeit</span>
+      <select id="resTime"></select>
+    </label>
+    <div class="field">
+      <span>Personen</span>
+      <div class="stepper">
+        <button type="button" data-guests="-1" aria-label="Weniger Personen">&minus;</button>
+        <b id="resGuests">2</b>
+        <button type="button" data-guests="1" aria-label="Mehr Personen">+</button>
+      </div>
+    </div>
+    <p class="reserve-legend">
+      <i class="dot free"></i>frei
+      <i class="dot small"></i>zu klein
+      <i class="dot taken"></i>belegt
+    </p>
+  </div>
+
+  <div class="floorplan-wrap">
+    <svg class="floorplan" id="floorplan" viewBox="0 0 1000 620" role="group" aria-label="Grundriss des Lokals — wähle einen Tisch"></svg>
+    <aside class="table-panel" id="tablePanel" aria-live="polite">
+      <p class="table-panel-empty">Wähle einen Tisch im Grundriss.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ══ 12 · KISZÁLLÍTÁS & INFO ════════════════════════════════════════ -->
+<section class="section info" id="info">
+  <div class="info-grid">
+    <div class="info-block" data-reveal>
+      <h3 class="h3">Öffnungszeiten</h3>
+      <ul class="hours" id="hours"></ul>
+    </div>
+    <div class="info-block" data-reveal>
+      <h3 class="h3">Lieferung</h3>
+      <ul class="zones" id="zones"></ul>
+      <p class="note">Ab 40 € Bestellwert liefern wir gratis. Durchschnittliche Lieferzeit 35 Minuten.</p>
+    </div>
+    <div class="info-block" data-reveal>
+      <h3 class="h3">So findest du uns</h3>
+      <p class="addr">1070 Wien,<br>Glutgasse 14</p>
+      <p><a class="link" href="tel:+4315550116">+43 1 555 0116</a></p>
+      <p><a class="link" href="mailto:pit@luciusburger.at">pit@luciusburger.at</a></p>
+      <button class="btn btn-outline" type="button" data-open-reserve>Tisch reservieren</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ LÁBLÉC ═════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-mark" aria-hidden="true">LUCIUS</div>
+  <div class="footer-row">
+    <p>&copy; 2026 Lucius Burger &middot; Fire-born since 2016</p>
+    <p class="footer-slogan" id="footerSlogan">Das Feuer hat uns den Namen gegeben. Wir haben es nur nicht ausgehen lassen.</p>
+    <p class="footer-demo">Demo &mdash; umgesetzt von <a class="link" href="https://conendigital.hu" rel="noopener">Conen Digital</a></p>
+  </div>
+</footer>
+
+<!-- ══ KOSÁR DRAWER ═══════════════════════════════════════════════════ -->
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Warenkorb und Bestellung" hidden>
+  <header class="drawer-head">
+    <div>
+      <span class="eyebrow" id="drawerStep">Warenkorb</span>
+      <h2 class="h3" id="drawerTitle">Deine Bestellung</h2>
+    </div>
+    <button class="icon-btn" type="button" id="cartClose" aria-label="Warenkorb schließen">&times;</button>
+  </header>
+
+  <div class="drawer-progress" id="checkoutProgress" hidden>
+    <i data-step="1"></i><i data-step="2"></i><i data-step="3"></i>
+  </div>
+
+  <div class="drawer-body">
+    <!-- 0. kosár -->
+    <section class="pane is-active" data-pane="cart">
+      <div id="cartLines"></div>
+      <div class="upsell" id="upsell" hidden>
+        <p class="upsell-t">Darf es dazu sein?</p>
+        <div class="upsell-row" id="upsellRow"></div>
+      </div>
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty-mark">&#128293;</div>
+        <p><b>Noch leer.</b><br>So lassen wir das nicht.</p>
+        <button class="btn btn-solid" type="button" data-goto="#menu">Ab zur Speisekarte</button>
+      </div>
+    </section>
+
+    <!-- 1. adatok -->
+    <section class="pane" data-pane="details">
+      <div class="when-choice" role="radiogroup" aria-label="Art der Übergabe">
+        <button class="when-opt is-active" type="button" data-mode="delivery"><b>Lieferung</b><span>&asymp; 35 Minuten &middot; ab 3,90 €</span></button>
+        <button class="when-opt" type="button" data-mode="pickup"><b>Abholung</b><span>Glutgasse 14 &middot; ingyenes</span></button>
+      </div>
+      <form id="detailsForm" novalidate>
+        <label class="field"><span>Name *</span><input name="name" required autocomplete="name" placeholder="Anna Gruber"></label>
+        <label class="field"><span>Telefon *</span><input name="phone" required inputmode="tel" autocomplete="tel" placeholder="+43 664 123 4567"></label>
+        <label class="field"><span>E-Mail *</span><input name="email" type="email" required autocomplete="email" placeholder="anna@beispiel.at"></label>
+        <div id="addrBlock">
+          <div class="field-row">
+            <label class="field field-sm"><span>PLZ *</span><input name="zip" required inputmode="numeric" maxlength="4" placeholder="1075"></label>
+            <label class="field"><span>Ort *</span><input name="city" required autocomplete="address-level2" value="Budapest"></label>
+          </div>
+          <label class="field"><span>Straße, Hausnummer *</span><input name="street" required autocomplete="street-address" placeholder="Glutgasse 14"></label>
+          <label class="field"><span>Stock, Tür, Klingel</span><input name="unit" placeholder="3. Stock, Tür 12 — Klingel: Gruber"></label>
+        </div>
+        <p class="pickup-note" id="pickupNote" hidden>
+          <b>1070 Wien, Glutgasse 14</b>
+          Am Tresen mit deinem Namen abholbereit. Die fertige Bestellung halten wir 20 Minuten warm.
+        </p>
+        <label class="field"><span>Anmerkung für die Küche</span><textarea name="note" rows="2" placeholder="Ohne Gurke, extra eingelegte Zwiebeln …"></textarea></label>
+        <p class="zone-hint" id="zoneHint"></p>
+      </form>
+    </section>
+
+    <!-- 2. időpont -->
+    <section class="pane" data-pane="when">
+      <div class="when-choice" role="radiogroup" aria-label="Wann soll geliefert werden">
+        <button class="when-opt is-active" type="button" data-when="asap">
+          <b>So bald wie möglich</b><span id="asapEta">≈ 35 Minuten</span>
+        </button>
+        <button class="when-opt" type="button" data-when="scheduled">
+          <b>Für später planen</b><span>Tag und Zeitfenster wählen</span>
+        </button>
+      </div>
+      <div class="when-sched" id="whenSched" hidden>
+        <label class="field"><span>Tag</span><input type="date" id="orderDate"></label>
+        <span class="field-label">Zeitfenster</span>
+        <div class="slotgrid" id="slotGrid" role="radiogroup" aria-label="Zeitfenster"></div>
+        <p class="slot-note" id="slotNote"></p>
+      </div>
+    </section>
+
+    <!-- 3. fizetés -->
+    <section class="pane" data-pane="pay">
+      <div class="paygrid" role="radiogroup" aria-label="Zahlungsart">
+        <button class="pay-opt is-active" type="button" data-pay="cash"><b>Bar</b><span>bei der Zustellung</span></button>
+        <button class="pay-opt" type="button" data-pay="card"><b>Karte</b><span>bei der Zustellung</span></button>
+        <button class="pay-opt" type="button" data-pay="online"><b>Online</b><span>Demo &mdash; es wird nichts abgebucht</span></button>
+      </div>
+      <div class="summary" id="orderSummary"></div>
+      <label class="check"><input type="checkbox" id="termsOk"><span>Mir ist klar: das ist eine Demo, die Bestellung ist nicht echt.</span></label>
+    </section>
+  </div>
+
+  <footer class="drawer-foot">
+    <div class="totals" id="totals"></div>
+    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    <div class="drawer-btns">
+      <button class="btn btn-ghost" type="button" id="stepBack" hidden>Zurück</button>
+      <button class="btn btn-solid btn-block" type="button" id="stepNext" disabled>Weiter zur Bestellung</button>
+    </div>
+  </footer>
+</aside>
+
+<!-- ══ FOGLALÁS MODAL (vendégadatok) ══════════════════════════════════ -->
+<div class="modal" id="resModal" role="dialog" aria-modal="true" aria-labelledby="resModalTitle" hidden>
+  <div class="modal-card">
+    <button class="icon-btn modal-x" type="button" data-close-modal aria-label="Schließen">&times;</button>
+    <span class="eyebrow">Tischreservierung &mdash; letzter Schritt</span>
+    <h2 class="h2" id="resModalTitle">Auf welchen Namen?</h2>
+    <p class="res-recap" id="resRecap"></p>
+    <form id="resForm" novalidate>
+      <label class="field"><span>Name *</span><input name="name" required autocomplete="name"></label>
+      <div class="field-row">
+        <label class="field"><span>Telefon *</span><input name="phone" required inputmode="tel" autocomplete="tel" placeholder="+43 664 123 4567"></label>
+        <label class="field"><span>E-Mail *</span><input name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <label class="field"><span>Der Anlass</span>
+        <select name="occasion">
+          <option>Einfach hungrig</option><option>Geburtstag</option><option>Date</option>
+          <option>Firmenessen</option><option>Jahrestag</option><option>Freundeskreis</option>
+        </select>
+      </label>
+      <label class="field"><span>Anmerkung (Allergie, Hochstuhl, Torte …)</span><textarea name="note" rows="2"></textarea></label>
+      <p class="form-status" id="resStatus" role="status" aria-live="polite"></p>
+      <button class="btn btn-solid btn-block" type="submit">Reservierung abschließen</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══ KÖSZÖNŐ MODAL ══════════════════════════════════════════════════ -->
+<div class="modal modal-thanks" id="thanksModal" role="dialog" aria-modal="true" aria-labelledby="thanksTitle" hidden>
+  <canvas class="thanks-burst" id="thanksBurst" aria-hidden="true"></canvas>
+  <div class="modal-card thanks-card">
+    <div class="thanks-seal" aria-hidden="true">
+      <svg viewBox="0 0 120 120">
+        <circle class="seal-ring" cx="60" cy="60" r="52"/>
+        <path class="seal-check" d="M38 62 L54 78 L84 44"/>
+      </svg>
+    </div>
+    <span class="eyebrow" id="thanksKicker">Bestellung erfasst</span>
+    <h2 class="h1" id="thanksTitle">Danke!</h2>
+    <p class="thanks-lede" id="thanksLede">Das liegt jetzt wirklich auf der Glut.</p>
+    <dl class="thanks-facts" id="thanksFacts"></dl>
+    <div class="thanks-items" id="thanksItems"></div>
+    <p class="thanks-sign">&mdash; Lucius &amp; das Team</p>
+    <div class="drawer-btns">
+      <button class="btn btn-ghost" type="button" data-close-modal>Schließen</button>
+      <button class="btn btn-solid" type="button" data-goto="#menu" data-close-modal>Noch etwas bestellen</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ══════════════════════════════════════════════════════════ -->
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/js/lenis.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/lucius.js"></script>
+<script src="assets/js/shop.js"></script>
+</body>
+</html>
