@@ -5,6 +5,8 @@ Jeder Ordner ist eine eigenständige Seite: `/<slug>/index.html`.
 
 | Slug | Branche |
 |---|---|
+| velora | Specialty Coffee / Flagship |
+| generalunternehmer | Generalunternehmer / Bau |
 | photovoltaik | Photovoltaik-Montage |
 | segelschule | Segelschule & Charter |
 | immobilien | Immobilien-Automation |
