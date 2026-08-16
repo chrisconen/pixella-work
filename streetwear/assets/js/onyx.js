@@ -228,7 +228,7 @@
   }
 
   function setupFabricVideo() {
-    fetchMedia("./assets/media/clip-fabric.mp4").then((src) => {
+    fetchMedia("https://cdn.pixella.at/streetwear/assets/media/clip-fabric.mp4").then((src) => {
       if (!src) return;
       const video = document.createElement("video");
       video.className = "fabric-video";

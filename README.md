@@ -5,6 +5,7 @@ Jeder Ordner ist eine eigenständige Seite: `/<slug>/index.html`.
 
 | Slug | Branche |
 |---|---|
+| velis | Privatklinik / Flagship |
 | velora | Specialty Coffee / Flagship |
 | generalunternehmer | Generalunternehmer / Bau |
 | photovoltaik | Photovoltaik-Montage |
@@ -21,3 +22,6 @@ Jeder Ordner ist eine eigenständige Seite: `/<slug>/index.html`.
 | lucius-burger | Burger & BBQ Restaurant |
 
 Alle fiktiv. Preise, Adressen und Kennzahlen sind auf Österreich gesetzt.
+
+Die Videos liegen in Cloudflare R2 und werden über `cdn.pixella.at` ausgeliefert,
+nicht aus diesem Repo (GitHub-Pages-Limit). Siehe `.gitignore`.

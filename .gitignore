@@ -1,2 +1,12 @@
 node_modules/
 .DS_Store
+
+# Die Demo-Videos liegen in Cloudflare R2 (Bucket: pixella-media), nicht im Repo —
+# so bleibt GitHub Pages unter dem 1-GB-Limit. HTML/JS verweisen auf cdn.pixella.at.
+# Neues Video hochladen (Key = Pfad ab dem Repo-Root):
+#   wrangler r2 object put "pixella-media/<demo>/<pfad>.mp4" \
+#     --file="<demo>/<pfad>.mp4" --content-type=video/mp4 \
+#     --cache-control="public, max-age=31536000, immutable" --remote
+**/*.mp4
+**/*.webm
+.wrangler/
