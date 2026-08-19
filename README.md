@@ -5,6 +5,7 @@ Jeder Ordner ist eine eigenständige Seite: `/<slug>/index.html`.
 
 | Slug | Branche |
 |---|---|
+| v-astra | Private Reisen / 3D Motion |
 | velis | Privatklinik / Flagship |
 | velora | Specialty Coffee / Flagship |
 | generalunternehmer | Generalunternehmer / Bau |
