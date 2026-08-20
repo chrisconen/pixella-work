@@ -2,7 +2,12 @@
   "use strict";
 
   const FRAME_COUNT = 144;
-  const DROP_AT = new Date("2026-08-01T00:00:00").getTime();
+  // ponytail: a drop dátuma eltelte után a következő év azonos hónap-napjára csavar (a demó sosem hal meg)
+  const DROP_AT = (() => {
+    const target = new Date("2026-08-01T00:00:00");
+    while (target.getTime() <= Date.now()) target.setFullYear(target.getFullYear() + 1);
+    return target.getTime();
+  })();
   const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
   const smoothstep = (from, to, value) => {
     const x = clamp((value - from) / Math.max(0.0001, to - from));
@@ -228,7 +233,7 @@
   }
 
   function setupFabricVideo() {
-    fetchMedia("https://cdn.pixella.at/streetwear/assets/media/clip-fabric.mp4").then((src) => {
+    fetchMedia("./assets/media/clip-fabric.mp4").then((src) => {
       if (!src) return;
       const video = document.createElement("video");
       video.className = "fabric-video";
